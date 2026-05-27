@@ -1,28 +1,3 @@
-// ANIMAÇÕES
-
-AOS.init({
-  duration:1200,
-  once:true
-});
-
-// MENU ESCURO
-
-window.addEventListener("scroll", () => {
-
-  const header = document.getElementById("header");
-
-  if(window.scrollY > 50){
-
-    header.style.background = "rgba(0,0,0,0.9)";
-
-  }else{
-
-    header.style.background = "rgba(0,0,0,0.5)";
-
-  }
-
-});
-
 // CONTADOR
 
 let numero = document.getElementById("numero");
@@ -43,10 +18,10 @@ let intervalo = setInterval(() => {
 
 }, 20);
 
-// DIGITAÇÃO
+// EFEITO DIGITAÇÃO
 
 const texto =
-"Tecnologia, inovação e sustentabilidade transformando o futuro do agro.";
+"Tecnologia e sustentabilidade transformando o agro.";
 
 let i = 0;
 
