@@ -1,7 +1,3 @@
-// =========================
-// ARQUIVO: script.js
-// =========================
-
 // ANIMAÇÕES
 
 AOS.init({
@@ -9,7 +5,7 @@ AOS.init({
   once:true
 });
 
-// MENU ESCURO AO ROLAR
+// MENU ESCURO
 
 window.addEventListener("scroll", () => {
 
@@ -21,13 +17,13 @@ window.addEventListener("scroll", () => {
 
   }else{
 
-    header.style.background = "rgba(0,0,0,0.4)";
+    header.style.background = "rgba(0,0,0,0.5)";
 
   }
 
 });
 
-// CONTADOR ANIMADO
+// CONTADOR
 
 let numero = document.getElementById("numero");
 
@@ -46,3 +42,26 @@ let intervalo = setInterval(() => {
   }
 
 }, 20);
+
+// DIGITAÇÃO
+
+const texto =
+"Tecnologia, inovação e sustentabilidade transformando o futuro do agro.";
+
+let i = 0;
+
+function escrever(){
+
+  if(i < texto.length){
+
+    document.getElementById("digitacao").innerHTML += texto.charAt(i);
+
+    i++;
+
+    setTimeout(escrever, 50);
+
+  }
+
+}
+
+escrever();
