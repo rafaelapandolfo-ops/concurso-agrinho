@@ -1,53 +1,350 @@
-/* ARTIGOS */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-.artigos{
+body{
+  font-family:'Poppins', sans-serif;
+  background:#05140d;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* PARTÍCULAS */
+
+.particles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background-image:
+    radial-gradient(#00ff88 1px, transparent 1px);
+  background-size:40px 40px;
+  opacity:0.08;
+  z-index:-1;
+  animation:mover 10s linear infinite;
+}
+
+@keyframes mover{
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-40px);
+  }
+}
+
+/* DRONE */
+
+.drone{
+  position:fixed;
+  top:100px;
+  left:-100px;
+  font-size:50px;
+  z-index:9999;
+  animation:drone 15s linear infinite;
+}
+
+@keyframes drone{
+
+  0%{
+    left:-100px;
+  }
+
+  100%{
+    left:110%;
+  }
+
+}
+
+/* MENU */
+
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  color:#00ff88;
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#00ff88;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.video-bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+  position:relative;
+  z-index:10;
+}
+
+.hero h1{
+  font-size:4rem;
+}
+
+.hero span{
+  color:#00ff88;
+}
+
+.hero p{
+  margin:20px 0;
+  font-size:1.2rem;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 35px;
+  background:#00ff88;
+  color:black;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:bold;
+  transition:0.4s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #00ff88;
+}
+
+/* SEÇÕES */
+
+section{
   padding:100px 8%;
 }
 
-.artigos h2{
+section h2{
   text-align:center;
-  color:#00ff88;
   margin-bottom:50px;
+  color:#00ff88;
   font-size:2.5rem;
 }
 
-.artigos-grid{
+/* CARDS */
+
+.cards,
+.tech-grid,
+.artigos-grid,
+.video-grid{
   display:flex;
-  gap:30px;
   flex-wrap:wrap;
+  gap:30px;
   justify-content:center;
 }
 
+.card,
+.tech-card,
 .artigo-card{
   width:320px;
-  background:#102b1f;
-  padding:30px;
+  background:#0d2418;
   border-radius:20px;
+  overflow:hidden;
+  padding:30px;
   transition:0.4s;
   border:1px solid rgba(255,255,255,0.1);
 }
 
+.card:hover,
+.tech-card:hover,
 .artigo-card:hover{
   transform:translateY(-10px);
   box-shadow:0 0 20px #00ff88;
 }
 
-.artigo-card h3{
+.icon{
+  font-size:3rem;
   margin-bottom:20px;
-  color:#00ff88;
 }
 
-.artigo-card p{
-  margin-bottom:20px;
-  line-height:1.6;
+.tech-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.tech-content{
+  margin-top:20px;
 }
 
 .artigo-card a{
   display:inline-block;
+  margin-top:20px;
   padding:10px 20px;
   background:#00ff88;
   color:black;
   border-radius:30px;
   text-decoration:none;
   font-weight:bold;
+}
+
+/* CONTADOR */
+
+.contador{
+  text-align:center;
+}
+
+#numero{
+  font-size:5rem;
+  color:#00ff88;
+}
+
+/* CLIMA */
+
+.clima-box{
+  max-width:400px;
+  margin:auto;
+  background:#0d2418;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 0 20px #00ff88;
+}
+
+/* GRÁFICO */
+
+.grafico-container{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:30px;
+  height:300px;
+}
+
+.barra{
+  width:100px;
+  background:#00ff88;
+  border-radius:10px 10px 0 0;
+  position:relative;
+  animation:subir 2s ease;
+}
+
+.barra span{
+  position:absolute;
+  top:-40px;
+  width:100%;
+  text-align:center;
+}
+
+.barra1{
+  height:250px;
+}
+
+.barra2{
+  height:200px;
+}
+
+.barra3{
+  height:150px;
+}
+
+@keyframes subir{
+  from{
+    height:0;
+  }
+}
+
+/* MAPA */
+
+.mapa-img{
+  width:100%;
+  max-width:700px;
+  display:block;
+  margin:auto;
+  border-radius:20px;
+}
+
+/* VIDEOS */
+
+.video-grid iframe{
+  width:500px;
+  height:300px;
+  border:none;
+  border-radius:20px;
+}
+
+/* FRASE */
+
+.frase{
+  background:linear-gradient(45deg,#00ff88,#006633);
+  text-align:center;
+}
+
+/* FOOTER */
+
+footer{
+  background:black;
+  text-align:center;
+  padding:30px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  header{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  nav{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .hero h1{
+    font-size:2.5rem;
+  }
+
+  .video-grid iframe{
+    width:100%;
+  }
+
 }
