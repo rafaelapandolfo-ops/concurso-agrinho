@@ -1,58 +1,374 @@
-<section class="artigos" id="artigos">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-  <h2>📚 Artigos e Pesquisas</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="artigos-grid">
+  <title>Agro Forte | Futuro Sustentável</title>
 
-    <div class="artigo-card">
+  <link rel="stylesheet" href="style.css">
 
-      <h3>🤖 IA e IoT na Agricultura</h3>
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      <p>
-        Estudos mostram que Inteligência Artificial
-        e sensores inteligentes ajudam a economizar água,
-        aumentar a produção e proteger o meio ambiente.
-      </p>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-      <a href="https://www.sciencedirect.com/science/article/pii/S2949736126000175"
-      target="_blank">
-      Ler Pesquisa
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- PARTÍCULAS -->
+  <div class="particles"></div>
+
+  <!-- DRONE -->
+  <div class="drone">🚁</div>
+
+  <!-- MENU -->
+  <header id="header">
+
+    <div class="logo">
+      🌱 Agro Forte
+    </div>
+
+    <nav>
+
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sustentabilidade</a>
+      <a href="#tecnologias">Tecnologias</a>
+      <a href="#mapa">Mapa</a>
+      <a href="#videos">Vídeos</a>
+      <a href="#artigos">Artigos</a>
+
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+
+    <video autoplay muted loop playsinline class="video-bg">
+
+      <source
+        src="https://cdn.coverr.co/videos/coverr-farmer-driving-a-tractor-1561/1080p.mp4"
+        type="video/mp4">
+
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content" data-aos="zoom-in">
+
+      <h1>
+        Agro Forte,
+        <span>Futuro Sustentável</span>
+      </h1>
+
+      <p id="digitacao"></p>
+
+      <a href="#tecnologias" class="btn">
+        Explorar Tecnologias 🚀
       </a>
 
     </div>
 
-    <div class="artigo-card">
+  </section>
 
-      <h3>🚜 Agricultura 4.0</h3>
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
 
-      <p>
-        Drones, satélites e automação estão revolucionando
-        o agronegócio brasileiro.
-      </p>
+    <h2 data-aos="fade-up">
+      🌿 Agricultura Sustentável
+    </h2>
 
-      <a href="https://periodicosbrasil.emnuvens.com.br/revista/article/view/749"
-      target="_blank">
-      Ler Artigo
-      </a>
+    <div class="cards">
+
+      <div class="card" data-aos="fade-right">
+
+        <div class="icon">💧</div>
+
+        <h3>Economia de Água</h3>
+
+        <p>
+          Sensores inteligentes ajudam
+          produtores a economizar água.
+        </p>
+
+      </div>
+
+      <div class="card" data-aos="fade-up">
+
+        <div class="icon">☀️</div>
+
+        <h3>Energia Limpa</h3>
+
+        <p>
+          Energia solar reduz impactos ambientais.
+        </p>
+
+      </div>
+
+      <div class="card" data-aos="fade-left">
+
+        <div class="icon">🤖</div>
+
+        <h3>IA no Campo</h3>
+
+        <p>
+          Inteligência Artificial melhora a produção.
+        </p>
+
+      </div>
 
     </div>
 
-    <div class="artigo-card">
+  </section>
 
-      <h3>🌎 Agro Sustentável</h3>
+  <!-- CONTADOR -->
+  <section class="contador">
+
+    <div class="contador-box" data-aos="zoom-in">
+
+      <h2 id="numero">0</h2>
 
       <p>
-        Pesquisas apontam que tecnologia e sustentabilidade
-        podem crescer juntas no campo.
+        Árvores preservadas 🌳
       </p>
-
-      <a href="https://digital.agrishow.com.br/sustentabilidade/agrishow-2026-destaca-tecnologias-para-um-agro-mais-sustentavel/"
-      target="_blank">
-      Ver Novidade
-      </a>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- CLIMA -->
+  <section class="clima">
+
+    <h2 data-aos="fade-up">
+      🌦️ Clima no Campo
+    </h2>
+
+    <div class="clima-box" data-aos="zoom-in">
+
+      <h3>Curitiba - PR</h3>
+
+      <p>☀️ 24°C</p>
+
+      <p>
+        Tempo ideal para agricultura sustentável.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- TECNOLOGIAS -->
+  <section class="tecnologias" id="tecnologias">
+
+    <h2 data-aos="fade-up">
+      🚀 Tecnologias do Futuro
+    </h2>
+
+    <div class="tech-grid">
+
+      <div class="tech-card" data-aos="flip-left">
+
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="tech-content">
+
+          <h3>🚁 Drones Agrícolas</h3>
+
+          <p>
+            Monitoramento inteligente das lavouras.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="tech-card" data-aos="flip-left" data-aos-delay="200">
+
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="tech-content">
+
+          <h3>🤖 Inteligência Artificial</h3>
+
+          <p>
+            IA ajuda no controle da produção agrícola.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="tech-card" data-aos="flip-left" data-aos-delay="400">
+
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="tech-content">
+
+          <h3>☀️ Energia Solar</h3>
+
+          <p>
+            Fazendas sustentáveis usando energia renovável.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GRÁFICO -->
+  <section class="grafico">
+
+    <h2 data-aos="fade-up">
+      📊 Economia de Água
+    </h2>
+
+    <div class="grafico-container">
+
+      <div class="barra barra1">
+        <span>90%</span>
+      </div>
+
+      <div class="barra barra2">
+        <span>70%</span>
+      </div>
+
+      <div class="barra barra3">
+        <span>50%</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MAPA -->
+  <section class="mapa" id="mapa">
+
+    <h2 data-aos="fade-up">
+      🗺️ Brasil Agrícola
+    </h2>
+
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/0/05/Brazil_regions_map.svg"
+      class="mapa-img"
+      data-aos="zoom-in">
+
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="videos" id="videos">
+
+    <h2 data-aos="fade-up">
+      🎥 Vídeos Modernos
+    </h2>
+
+    <div class="video-grid">
+
+      <iframe
+        src="https://www.youtube.com/embed/8V2jB6N5S5Q"
+        allowfullscreen>
+      </iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/f0HC1Udk6-E"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </section>
+
+  <!-- ARTIGOS -->
+  <section class="artigos" id="artigos">
+
+    <h2 data-aos="fade-up">
+      📚 Artigos Científicos
+    </h2>
+
+    <div class="artigos-grid">
+
+      <div class="artigo-card" data-aos="fade-right">
+
+        <h3>🤖 IA e Agricultura</h3>
+
+        <p>
+          Pesquisas mostram que Inteligência Artificial
+          aumenta a produtividade agrícola.
+        </p>
+
+        <a href="https://arxiv.org/abs/2202.10459" target="_blank">
+          Ler Pesquisa
+        </a>
+
+      </div>
+
+      <div class="artigo-card" data-aos="fade-up">
+
+        <h3>🚜 Agricultura 4.0</h3>
+
+        <p>
+          Sensores e automação transformam o agro brasileiro.
+        </p>
+
+        <a href="https://periodicosbrasil.emnuvens.com.br/revista/article/view/749"
+          target="_blank">
+          Ler Artigo
+        </a>
+
+      </div>
+
+      <div class="artigo-card" data-aos="fade-left">
+
+        <h3>🌱 Sustentabilidade</h3>
+
+        <p>
+          Tecnologia e meio ambiente trabalhando juntos.
+        </p>
+
+        <a href="https://digital.agrishow.com.br"
+          target="_blank">
+          Ver Novidades
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FRASE -->
+  <section class="frase">
+
+    <h2>
+      “Produzir mais sem destruir o planeta.”
+    </h2>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      Concurso Agrinho 2026 🌎
+    </p>
+
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
