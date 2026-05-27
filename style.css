@@ -1,330 +1,53 @@
-/* =========================
-ARQUIVO: style.css
-========================= */
+/* ARTIGOS */
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Poppins', sans-serif;
-  background:#061b11;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* PARTÍCULAS */
-
-.particles{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background-image:
-    radial-gradient(#00ff88 1px, transparent 1px);
-  background-size:40px 40px;
-  opacity:0.08;
-  z-index:-1;
-  animation:mover 10s linear infinite;
-}
-
-@keyframes mover{
-  from{
-    transform:translateY(0);
-  }
-
-  to{
-    transform:translateY(-40px);
-  }
-}
-
-/* MENU */
-
-header{
-  position:fixed;
-  width:100%;
-  top:0;
-  left:0;
-  padding:20px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:999;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(10px);
-}
-
-.logo{
-  font-size:1.5rem;
-  font-weight:bold;
-  color:#00ff88;
-}
-
-nav{
-  display:flex;
-  gap:20px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#00ff88;
-}
-
-/* HERO */
-
-.hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.video-bg{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.overlay{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.6);
-}
-
-.hero-content{
-  position:relative;
-  z-index:10;
-  max-width:800px;
-}
-
-.hero h1{
-  font-size:4rem;
-  margin-bottom:20px;
-}
-
-.hero span{
-  color:#00ff88;
-}
-
-.hero p{
-  font-size:1.3rem;
-  margin-bottom:30px;
-}
-
-.btn{
-  display:inline-block;
-  padding:15px 35px;
-  background:#00ff88;
-  color:black;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.4s;
-}
-
-.btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px #00ff88;
-}
-
-/* SEÇÕES */
-
-section{
+.artigos{
   padding:100px 8%;
 }
 
-section h2{
+.artigos h2{
   text-align:center;
+  color:#00ff88;
   margin-bottom:50px;
   font-size:2.5rem;
-  color:#00ff88;
 }
 
-/* CARDS */
-
-.cards{
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.card{
-  width:300px;
-  background:rgba(255,255,255,0.05);
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,0.1);
-  transition:0.4s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 20px #00ff88;
-}
-
-.icon{
-  font-size:3rem;
-  margin-bottom:20px;
-}
-
-/* TECNOLOGIAS */
-
-.tech-grid{
+.artigos-grid{
   display:flex;
   gap:30px;
   flex-wrap:wrap;
   justify-content:center;
 }
 
-.tech-card{
-  width:330px;
-  border-radius:20px;
-  overflow:hidden;
-  background:#0f2e1f;
-  transition:0.5s;
-}
-
-.tech-card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 25px #00ff88;
-}
-
-.tech-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.tech-content{
-  padding:20px;
-}
-
-/* CONTADOR */
-
-.contador{
-  text-align:center;
-}
-
-.contador-box{
-  background:#0f2e1f;
-  padding:50px;
-  border-radius:20px;
-}
-
-#numero{
-  font-size:5rem;
-  color:#00ff88;
-}
-
-/* GALERIA */
-
-.galeria-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.galeria-grid img{
-  width:100%;
-  height:250px;
-  object-fit:cover;
-  border-radius:20px;
-  transition:0.4s;
-}
-
-.galeria-grid img:hover{
-  transform:scale(1.05);
-}
-
-/* VIDEOS */
-
-.video-grid{
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.video-grid iframe{
-  width:500px;
-  height:300px;
-  border:none;
-  border-radius:20px;
-}
-
-/* NOVIDADES */
-
-.novidades-grid{
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.novidade{
+.artigo-card{
   width:320px;
+  background:#102b1f;
   padding:30px;
   border-radius:20px;
-  background:#0f2e1f;
   transition:0.4s;
+  border:1px solid rgba(255,255,255,0.1);
 }
 
-.novidade:hover{
+.artigo-card:hover{
   transform:translateY(-10px);
   box-shadow:0 0 20px #00ff88;
 }
 
-/* FRASE */
-
-.frase{
-  text-align:center;
-  background:linear-gradient(45deg,#00ff88,#007744);
+.artigo-card h3{
+  margin-bottom:20px;
+  color:#00ff88;
 }
 
-.frase h2{
-  color:white;
+.artigo-card p{
+  margin-bottom:20px;
+  line-height:1.6;
 }
 
-/* FOOTER */
-
-footer{
-  text-align:center;
-  padding:30px;
-  background:black;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-  header{
-    flex-direction:column;
-    gap:20px;
-  }
-
-  nav{
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .hero h1{
-    font-size:2.5rem;
-  }
-
-  .video-grid iframe{
-    width:100%;
-  }
-
+.artigo-card a{
+  display:inline-block;
+  padding:10px 20px;
+  background:#00ff88;
+  color:black;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
 }
