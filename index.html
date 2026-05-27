@@ -1,0 +1,211 @@
+<!-- =========================
+ARQUIVO: index.html
+========================= -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agro Forte - Futuro Sustentável</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Biblioteca de animação -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <header>
+    <nav>
+      <h1>🌱 Agro Forte</h1>
+
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sustentabilidade</a></li>
+        <li><a href="#tecnologia">Tecnologias</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#videos">Vídeos</a></li>
+        <li><a href="#noticias">Novidades</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+
+    <video autoplay muted loop playsinline class="video-bg">
+      <source src="https://cdn.coverr.co/videos/coverr-tractor-working-in-the-field-1561/1080p.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h2 data-aos="fade-up">
+        Agro Forte, Futuro Sustentável
+      </h2>
+
+      <p data-aos="fade-up" data-aos-delay="300">
+        Tecnologia, inovação e sustentabilidade construindo o futuro do campo.
+      </p>
+
+      <a href="#tecnologia" class="btn" data-aos="zoom-in" data-aos-delay="600">
+        Explorar Tecnologias
+      </a>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+
+    <h2 data-aos="fade-right">🌿 O Agro Sustentável</h2>
+
+    <div class="cards">
+
+      <div class="card" data-aos="flip-left">
+        <h3>💧 Economia de Água</h3>
+        <p>
+          Sistemas inteligentes ajudam a economizar água e proteger os rios.
+        </p>
+      </div>
+
+      <div class="card" data-aos="flip-left" data-aos-delay="200">
+        <h3>☀️ Energia Limpa</h3>
+        <p>
+          A energia solar reduz custos e preserva o meio ambiente.
+        </p>
+      </div>
+
+      <div class="card" data-aos="flip-left" data-aos-delay="400">
+        <h3>🚜 Agricultura Moderna</h3>
+        <p>
+          Máquinas automatizadas aumentam a produção com sustentabilidade.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECNOLOGIAS -->
+  <section class="tecnologia" id="tecnologia">
+
+    <h2 data-aos="fade-up">🚀 Tecnologias do Futuro</h2>
+
+    <div class="tech-container">
+
+      <div class="tech-box" data-aos="zoom-in">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop">
+        <h3>Drones Agrícolas</h3>
+        <p>
+          Monitoram plantações e ajudam no controle de pragas.
+        </p>
+      </div>
+
+      <div class="tech-box" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+        <h3>Inteligência Artificial</h3>
+        <p>
+          Analisa o solo e melhora a produtividade agrícola.
+        </p>
+      </div>
+
+      <div class="tech-box" data-aos="zoom-in" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop">
+        <h3>Energia Solar</h3>
+        <p>
+          Fazendas sustentáveis usando energia renovável.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria" id="galeria">
+
+    <h2 data-aos="fade-up">📸 Galeria do Campo</h2>
+
+    <div class="galeria-grid">
+
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop" data-aos="zoom-in">
+
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop" data-aos="zoom-in">
+
+      <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop" data-aos="zoom-in">
+
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" data-aos="zoom-in">
+
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="videos" id="videos">
+
+    <h2 data-aos="fade-up">🎥 Vídeos</h2>
+
+    <div class="video-container">
+
+      <iframe
+        src="https://www.youtube.com/embed/6M7IP0zA5tQ"
+        title="YouTube video"
+        allowfullscreen>
+      </iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/f0HC1Udk6-E"
+        title="YouTube video"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+  </section>
+
+  <!-- NOTÍCIAS -->
+  <section class="noticias" id="noticias">
+
+    <h2 data-aos="fade-up">📰 Novidades do Agro</h2>
+
+    <div class="noticias-container">
+
+      <div class="noticia" data-aos="fade-right">
+        <h3>🌱 Agricultura Inteligente</h3>
+
+        <p>
+          Novas tecnologias ajudam produtores a preservar o meio ambiente.
+        </p>
+      </div>
+
+      <div class="noticia" data-aos="fade-left">
+        <h3>🤖 Robôs no Campo</h3>
+
+        <p>
+          Máquinas automatizadas aumentam a eficiência agrícola.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+
+    <p>
+      Concurso Agrinho 2026 | Agro Forte, Futuro Sustentável 🌎
+    </p>
+
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
