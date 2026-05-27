@@ -1,0 +1,263 @@
+/* =========================
+ARQUIVO: style.css
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#f4fff4;
+  color:#222;
+  overflow-x:hidden;
+}
+
+/* MENU */
+
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+}
+
+nav h1{
+  color:#7CFC00;
+}
+
+nav ul{
+  display:flex;
+  gap:20px;
+  list-style:none;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#7CFC00;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.video-bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+  position:relative;
+  z-index:10;
+  color:white;
+  max-width:800px;
+}
+
+.hero h2{
+  font-size:4rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:1.3rem;
+  margin-bottom:30px;
+}
+
+.btn{
+  background:#32CD32;
+  color:white;
+  padding:15px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.4s;
+}
+
+.btn:hover{
+  background:#228B22;
+}
+
+/* SEÇÕES */
+
+section{
+  padding:100px 8%;
+}
+
+section h2{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:2.5rem;
+  color:#2E8B57;
+}
+
+/* CARDS */
+
+.cards{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  width:300px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+/* TECNOLOGIAS */
+
+.tech-container{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.tech-box{
+  width:320px;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+
+.tech-box:hover{
+  transform:scale(1.05);
+}
+
+.tech-box img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.tech-box h3{
+  padding:20px;
+}
+
+.tech-box p{
+  padding:0 20px 20px;
+}
+
+/* GALERIA */
+
+.galeria-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.galeria-grid img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.galeria-grid img:hover{
+  transform:scale(1.05);
+}
+
+/* VIDEOS */
+
+.video-container{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.video-container iframe{
+  width:500px;
+  height:300px;
+  border:none;
+  border-radius:20px;
+}
+
+/* NOTÍCIAS */
+
+.noticias-container{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.noticia{
+  width:350px;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* RODAPÉ */
+
+footer{
+  background:#1b1b1b;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  nav{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .hero h2{
+    font-size:2.5rem;
+  }
+
+  .video-container iframe{
+    width:100%;
+  }
+
+}
