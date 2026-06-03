@@ -1,71 +1,31 @@
-/* Definições de Estilo Modo Escuro Dinâmico */
-:root {
-    --bg-darker: #080b11;
-    --bg-card: #111622;
-    --border-color: #202b3e;
-    --neon-green: #00ff66;
-    --neon-blue: #00b3ff;
-    --text-main: #f0f3f8;
-    --text-dim: #7e8e9f;
-}
+// Valores Iniciais do Simulador
+let contadorArvores = 0;
+let totalCO2 = 0.0;
+let nivelProdutividade = 100;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
+function aplicarTecnologia(tipo) {
+    const painelTerminal = document.getElementById("terminal-feedback");
+    
+    if (tipo === 'ilpf') {
+        contadorArvores += 180;
+        totalCO2 += 4.2;
+        nivelProdutividade += 20;
+        painelTerminal.innerText = `> [PROJETO ATIVADO]: Sistema ILPF integrado. Área degradada recuperada com sucesso. Emissões reduzidas.`;
+    } 
+    else if (tipo === 'monitor') {
+        contadorArvores += 450;
+        totalCO2 += 10.5;
+        painelTerminal.innerText = `> [SISTEMA LIGADO]: Rastreamento via satélite ativo. Desmatamento ilegal bloqueado nas coordenadas de divisa.`;
+    } 
+    else if (tipo === 'floresta') {
+        contadorArvores += 600;
+        totalCO2 += 15.0;
+        nivelProdutividade += 5;
+        painelTerminal.innerText = `> [REFLORESTAMENTO]: Proteção de APP concluída. Margens de rios protegidas e biodiversidade em ascensão.`;
+    }
 
-body {
-    background-color: var(--bg-darker);
-    color: var(--text-main);
-    overflow-x: hidden;
+    // Atualiza elementos em tempo real com os novos dados calculados
+    document.getElementById("val-arvores").innerText = contadorArvores;
+    document.getElementById("val-co2").innerText = totalCO2.toFixed(1) + " t";
+    document.getElementById("val-prod").innerText = nivelProdutividade + "%";
 }
-
-/* Layout da Aplicação */
-.app-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-@media (max-width: 900px) {
-    .app-container { flex-direction: column; }
-}
-
-/* Barra Lateral */
-.sidebar {
-    width: 280px;
-    background-color: #0b0e16;
-    border-right: 1px solid var(--border-color);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-@media (max-width: 900px) {
-    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
-}
-
-.brand h2 {
-    color: var(--neon-green);
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-}
-
-.sidebar-info h3, .sources-panel h3 {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.8rem;
-}
-
-.sidebar-info p {
-    font-size: 0.9rem;
-    color: var(--text-main);
-    line-height: 1.5;
-}
-
-.sources-panel a {
-    display:
