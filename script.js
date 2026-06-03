@@ -1,41 +1,148 @@
-// Variáveis do Estado do Minijogo
-let totalArvores = 0;
-let hectaresEvitados = 0;
-let experienciaSustentavel = 100;
+// CONTADORES ANIMADOS
 
-function jogarTurno(acao) {
-    const consoleOutput = document.getElementById("game-console");
-    
-    if (acao === 'ilpf') {
-        totalArvores += 240;
-        hectaresEvitados += 35;
-        experienciaSustentavel += 50;
-        consoleOutput.innerHTML = `> [ACAO CONCLUIDA]: Implementando sistemas ILPF. Você otimizou a produção de grãos e carnes sem derrubar nenhuma nova árvore. +240 Árvores Protegidas e +50 XP!`;
-    } 
-    else if (acao === 'satelite') {
-        totalArvores += 500;
-        hectaresEvitados += 110;
-        experienciaSustentavel += 75;
-        consoleOutput.innerHTML = `> [SISTEMA ALERTA]: Sensores de satélite detectaram atividade suspeita na fronteira agrícola. O desmatamento ilegal foi contido imediatamente. +110 Hectares Protegidos!`;
-    } 
-    else if (acao === 'codigo') {
-        totalArvores += 850;
-        hectaresEvitados += 70;
-        experienciaSustentavel += 100;
-        consoleOutput.innerHTML = `> [CONSERVAÇÃO ATIVADA]: Reserva Legal mapeada e delimitada conforme as regras federais. A biodiversidade local agradece. +850 Árvores Salvas e +100 XP!`;
-    }
+const numeros = document.querySelectorAll(".numero");
 
-    // Aplica efeito visual de atualização nos elementos gráficos da tela
-    atualizarInterface();
+numeros.forEach(numero=>{
+
+let inicio = 0;
+const fim = parseInt(numero.dataset.num);
+
+const timer = setInterval(()=>{
+
+inicio++;
+
+numero.textContent = inicio;
+
+if(inicio >= fim){
+clearInterval(timer);
 }
 
-function atualizarInterface() {
-    document.getElementById("txt-arvores").innerText = totalArvores;
-    document.getElementById("txt-desmatamento").innerText = hectaresEvitados + " ha";
-    document.getElementById("txt-pontos").innerText = experienciaSustentavel + " XP";
-    
-    // Altera dinamicamente a cor da fonte do painel de controle conforme ganha pontos
-    if(experienciaSustentavel >= 300) {
-        document.getElementById("txt-pontos").style.color = "#00ff66";
-    }
+},20);
+
+});
+
+
+// QUIZ
+
+const perguntas = [
+
+{
+pergunta:"Qual é o objetivo da arborização?",
+respostas:[
+"Poluir rios",
+"Melhorar o meio ambiente",
+"Aumentar queimadas",
+"Destruir florestas"
+],
+correta:1
+},
+
+{
+pergunta:"O que reduz o desmatamento?",
+respostas:[
+"Queimadas",
+"Preservação ambiental",
+"Poluição",
+"Lixo"
+],
+correta:1
+},
+
+{
+pergunta:"Qual prática é sustentável?",
+respostas:[
+"Reciclagem",
+"Desmatamento",
+"Poluição",
+"Queimadas"
+],
+correta:0
+},
+
+{
+pergunta:"O que protege a biodiversidade?",
+respostas:[
+"Preservação dos habitats",
+"Queimadas",
+"Caça ilegal",
+"Poluição"
+],
+correta:0
 }
+
+];
+
+let atual = 0;
+let pontos = 0;
+
+const pergunta = document.getElementById("pergunta");
+const respostas = document.getElementById("respostas");
+const resultado = document.getElementById("resultado");
+
+function carregarPergunta(){
+
+if(atual >= perguntas.length){
+
+resultado.innerHTML = `
+<h2>🏆 Resultado Final</h2>
+<p>Você acertou ${pontos} de ${perguntas.length}</p>
+`;
+
+pergunta.style.display = "none";
+respostas.style.display = "none";
+
+return;
+}
+
+let questao = perguntas[atual];
+
+pergunta.textContent = questao.pergunta;
+
+respostas.innerHTML = "";
+
+questao.respostas.forEach((texto,index)=>{
+
+const btn = document.createElement("button");
+
+btn.textContent = texto;
+
+btn.onclick = ()=>{
+
+if(index === questao.correta){
+pontos++;
+}
+
+atual++;
+carregarPergunta();
+
+};
+
+respostas.appendChild(btn);
+
+});
+
+}
+
+carregarPergunta();
+
+
+// EFEITO SCROLL
+
+window.addEventListener("scroll",()=>{
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+const pos = card.getBoundingClientRect().top;
+
+if(pos < window.innerHeight - 100){
+
+card.style.opacity = "1";
+card.style.transform = "translateY(0px)";
+
+}
+
+});
+
+});
