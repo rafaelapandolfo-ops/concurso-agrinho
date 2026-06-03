@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concurso Agrinho 2026 | Agro Forte & Futuro Sustentável</title>
+    <title>Agrinho 2026 | Agro Forte & Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="tag-agrinho">AGRINHO 2026</span>
+            <span class="tag-agrinho">CONCURSO AGRINHO 2026</span>
             <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>Descubra como a tecnologia e o respeito à biodiversidade estão desenhando o novo cenário da produção de alimentos.</p>
-            <a href="#simulador" class="btn-primary">Explorar Painel Dinâmico</a>
+            <p>A ciência, a tecnologia e o respeito à biodiversidade estão transformando o campo. Explore, jogue o quiz e teste seus conhecimentos!</p>
+            <a href="#dashboard" class="btn-primary">Acessar Hub Dinâmico</a>
         </div>
     </header>
 
-    <section id="simulador" class="dashboard-section">
+    <section id="dashboard" class="dashboard-section">
         <div class="section-title">
-            <h2>Simulador de Impacto AgroAmbiental</h2>
-            <p>Clique nas tecnologias para ver a transformação dos indicadores ambientais em tempo real.</p>
+            <h2>Painel de Controle AgroAmbiental</h2>
+            <p>Ative tecnologias sustentáveis abaixo para monitorar os impactos ecológicos em tempo real.</p>
         </div>
 
         <div class="dashboard-grid">
             <div class="controls-card">
-                <h3>Ativar Tecnologias no Campo</h3>
+                <h3>Implementar Ações no Campo</h3>
                 <div class="btn-group">
                     <button class="btn-tech" onclick="ativarTecnologia('ilpf')">
                         <strong>🌱 Sistema ILPF</strong>
                         <span>Integração Lavoura-Pecuária-Floresta</span>
                     </button>
                     <button class="btn-tech" onclick="ativarTecnologia('biologicos')">
-                        <strong>🧫 Defensivos Biológicos</strong>
-                        <span>Manejo integrado com base na ciência</span>
+                        <strong>🧫 Bioinsumos e Defensivos Biológicos</strong>
+                        <span>Proteção de cultivos baseada na biologia</span>
                     </button>
                     <button class="btn-tech" onclick="ativarTecnologia('satelite')">
-                        <strong>🛰️ Monitoramento Remoto</strong>
-                        <span>Prevenção ativa contra o desmatamento ilegal</span>
+                        <strong>🛰️ Rastreamento Conectado</strong>
+                        <span>Barreira tecnológica contra o desmatamento ilegal</span>
                     </button>
                 </div>
                 <div id="log-sistema" class="terminal-log">
-                    [Status]: Sistema pronto. Aguardando comando do produtor...
+                    [Status]: Aguardando comandos de gestão...
                 </div>
             </div>
 
@@ -55,67 +55,28 @@
                     <span class="metric-value" id="m-co2">0.0 t</span>
                 </div>
                 <div class="metric-box">
-                    <span class="metric-label">Eficiência por Hectare</span>
+                    <span class="metric-label">Produtividade da Terra</span>
                     <span class="metric-value" id="m-prod">100%</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="content-container">
+    <main class="main-layout">
         
-        <section class="info-block">
-            <h2>Produzir mais com menos espaço: O fim do desmatamento ilegal</h2>
-            <p>O pilar de um futuro sustentável baseia-se na **intensificação sustentável**. Práticas como a recuperação de pastagens degradadas permitem dobrar a produtividade de carne e grãos sem a necessidade de avançar um único hectare sobre a vegetação nativa.</p>
-            <p>Manter a floresta em pé não é apenas uma obrigação legal determinada pelo Código Florestal; é uma estratégia de sobrevivência econômica. As árvores regulam o regime de chuvas microclimáticas que sustentam as safras brasileiras.</p>
-        </section>
-
-        <section class="media-gallery">
-            <div class="media-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/P_Pq6VbS0_E" allowfullscreen></iframe>
+        <div class="column-left">
+            
+            <section class="card quiz-section">
+                <h2>🧠 Quiz Dinâmico: Missão Sustentabilidade</h2>
+                <p>Responda às questões abaixo para testar seu nível de conhecimento sobre o agro moderno:</p>
+                
+                <div class="quiz-box" id="q1-container">
+                    <h4>1. Como o sistema ILPF (Integração Lavoura-Pecuária-Floresta) ajuda a combater o desmatamento?</h4>
+                    <button class="btn-quiz" onclick="verificarQuiz(1, 'errado', this)">A) Abrindo novas áreas de mata nativa para plantar árvores exóticas.</button>
+                    <button class="btn-quiz" onclick="verificarQuiz(1, 'certo', this)">B) Recuperando pastagens degradadas, permitindo produzir mais no mesmo espaço.</button>
+                    <button class="btn-quiz" onclick="verificarQuiz(1, 'errado', this)">C) Reduzindo a quantidade total de alimentos produzidos no país.</button>
                 </div>
-                <div class="media-info">
-                    <h4>Ciência Aplicada ao Campo</h4>
-                    <p>Documentário técnico mostrando como a integração de árvores com lavouras neutraliza a emissão de gases de efeito estufa.</p>
-                </div>
-            </div>
 
-            <div class="media-card">
-                <div class="image-wrapper">
-                    <img src="https://www.embrapa.br/image/journal/article?img_id=82361685" alt="Monitoramento inteligente de lavouras">
-                </div>
-                <div class="media-info">
-                    <h4>Sensoriamento e Monitoramento</h4>
-                    <p>O monitoramento por satélites identifica a saúde do solo e impede infrações ambientais em tempo real.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="sources-block">
-            <h3>Fontes de Dados e Referências Científicas</h3>
-            <p>Este portal segue rigorosamente os dados consolidados das principais entidades agroambientais do Brasil:</p>
-            <div class="sources-grid">
-                <a href="https://www.embrapa.br/" target="_blank" class="source-link">
-                    <strong>Embrapa</strong> Research & Desenvolvimento Sustentável
-                </a>
-                <a href="https://mapbiomas.org/" target="_blank" class="source-link">
-                    <strong>MapBiomas</strong> Dados geoespaciais sobre uso da terra
-                </a>
-                <a href="https://www.sistemafaep.org.br/" target="_blank" class="source-link">
-                    <strong>Sistema FAEP/SENAR-PR</strong> Metodologia Pedagógica Agrinho
-                </a>
-                <a href="https://www.gov.br/mma/" target="_blank" class="source-link">
-                    <strong>Ministério do Meio Ambiente</strong> Diretrizes de Proteção Nativa
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Agrinho 2026 — Plataforma Educativa de Tecnologias Sustentáveis</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <div class="quiz-box" id="q2-container">
+                    <h4>2. Qual é o papel principal da Reserva Legal nas propriedades rurais segundo o Código Florestal?</h4>
+                    <button class="btn-quiz" onclick="verificarQuiz(2, 'certo', this)">A) Preservar uma porcentagem da cobertura vegetal nativa para proteger
