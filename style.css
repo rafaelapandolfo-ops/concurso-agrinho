@@ -1,3 +1,8 @@
+/* =========================================================================
+   CONCURSO AGRINHO 2026 - CATEGORIA PROGRAMAÇÃO (FRONT-END)
+   TEMA: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente
+   ========================================================================= */
+
 :root {
     /* Paleta de Cores e Identidade Visual (Tema: Agro e Tecnologia) */
     --bg-base: #060814;
@@ -29,22 +34,7 @@ body {
 
 /* --- HERO SECTION --- */
 .hero {
-    /* DICA EDITAL: Recomenda-se baixar a imagem e colocá-la na pasta /assets do projeto */
+    /* DICA EDITAL: Certifique-se de que a imagem 'hero-agro.jpg' esteja realmente salva na pasta assets */
     background: linear-gradient(rgba(6, 8, 20, 0.85), rgba(6, 8, 20, 1)), 
                 url('../assets/hero-agro.jpg') no-repeat center/cover;
-    height: 65vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-}
-
-.hero-content {
-    max-width: 800px;
-    text-align: center;
-}
-
-.tag-agrinho {
-    background: rgba(0, 255, 102, 0.1);
-    color: var(--color-primary);
-    border: 1px solid var
+    height:
