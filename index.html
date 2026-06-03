@@ -1,158 +1,225 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concurso Agrinho 2026 | AgroForte Hub</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ==========================================
+// 1. LÓGICA DO SIMULADOR AGROAMBIENTAL
+// ==========================================
 
-    <header class="hero">
-        <div class="hero-content">
-            <span class="tag-agrinho">AGRINHO 2026</span>
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>A imersão definitiva sobre o equilíbrio entre a alta produtividade do campo e a conservação rigorosa do meio ambiente.</p>
-            <div class="hero-btns">
-                <a href="#simulador" class="btn-primary">Painel Dinâmico</a>
-                <a href="#quiz-section" class="btn-secondary">Testar Conhecimentos</a>
-            </div>
-        </div>
-    </header>
+// Estado inicial do simulador
+const estadoSimulador = {
+    ilpf: { ativo: false, arvores: 450, co2: 12.5, prod: 20 },
+    biologicos: { ativo: false, arvores: 0, co2: 4.2, prod: 15 },
+    satelite: { ativo: false, arvores: 1200, co2: 35.0, prod: -5 } // Foco total em proteção ambiental
+};
 
-    <section id="simulador" class="dashboard-section">
-        <div class="section-title">
-            <h2>Simulador de Impacto AgroAmbiental</h2>
-            <p>Ative as diretrizes tecnológicas e veja as métricas de sustentabilidade responderem instantaneamente.</p>
-        </div>
+function ativarTecnologia(idTecnologia) {
+    const tecnologia = estadoSimulador[idTecnologia];
+    const botao = document.querySelector(`button[onclick="ativarTecnologia('${idTecnologia}')"]`);
+    const logSistema = document.getElementById('log-sistema');
 
-        <div class="dashboard-grid">
-            <div class="controls-card">
-                <h3>Decisões Estratégicas</h3>
-                <div class="btn-group">
-                    <button class="btn-tech" onclick="ativarTecnologia('ilpf')">
-                        <strong>🌱 Integração Lavoura-Pecuária-Floresta</strong>
-                        <span>Otimização de espaço e fixação biológica de carbono.</span>
-                    </button>
-                    <button class="btn-tech" onclick="ativarTecnologia('biologicos')">
-                        <strong>🧫 Bioinsumos e Manejo Integrado</strong>
-                        <span>Substituição de químicos por microrganismos naturais.</span>
-                    </button>
-                    <button class="btn-tech" onclick="ativarTecnologia('satelite')">
-                        <strong>🛰️ Sensoriamento Remoto</strong>
-                        <span>Rastreamento em tempo real contra desmatamento ilegal.</span>
-                    </button>
-                </div>
-                <div id="log-sistema" class="terminal-log">
-                    [Status]: Terminal operacional. Aguardando comandos...
-                </div>
-            </div>
+    if (!tecnologia) return;
 
-            <div class="metrics-card">
-                <div class="metric-box">
-                    <span class="metric-label">Árvores Preservadas</span>
-                    <span class="metric-value" id="m-arvores">0</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-label">Carbono Fixado</span>
-                    <span class="metric-value" id="m-co2">0.0 t</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-label">Produtividade da Terra</span>
-                    <span class="metric-value" id="m-prod">100%</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Alterna o estado ativo/inativo
+    tecnologia.ativo = !tecnologia.ativo;
 
-    <main class="content-container">
-        <section class="info-rich">
-            <h2>Ciência e Sustentabilidade no Campo</h2>
-            
-            <div class="info-columns">
-                <div class="info-text-card">
-                    <h3>Combate ao Desmatamento Ilegal</h3>
-                    <p>O desmatamento ilegal altera o balanço de radiação e os fluxos de água na atmosfera, provocando secas prolongadas que afetam diretamente o rendimento das safras. O Código Florestal exige a manutenção da Reserva Legal e das Áreas de Preservação Permanente (APPs) para salvaguardar os recursos hídricos e a fertilidade natural do solo.</p>
-                </div>
-                
-                <div class="info-text-card">
-                    <h3>Intensificação Tecnológica</h3>
-                    <p>Através da rotação de culturas, plantio direto na palha e agricultura de precisão, o produtor rural consegue obter até três safras no mesmo ano civil sem expandir a área de cultivo. Isso poupa florestas nativas e mitiga a compactação e a erosão dos solos agrícolas.</p>
-                </div>
-            </div>
-        </section>
+    // Atualiza a interface do botão (efeito visual de selecionado)
+    if (tecnologia.ativo) {
+        botao.classList.add('active'); // Você pode estilizar a classe .active no seu CSS
+        botao.style.border = "2px solid #2ecc71";
+        botao.style.backgroundColor = "rgba(46, 204, 113, 0.1)";
+        adicionarLog(`[Sucesso]: Diretriz '${idTecnologia.toUpperCase()}' ativada com sucesso.`);
+    } else {
+        botao.classList.remove('active');
+        botao.style.border = "";
+        botao.style.backgroundColor = "";
+        adicionarLog(`[Aviso]: Diretriz '${idTecnologia.toUpperCase()}' desativada.`);
+    }
 
-        <section class="video-hub">
-            <h2>🎥 Central de Conhecimento Multimídia</h2>
-            <p class="section-desc">Materiais técnicos e documentários sobre a revolução sustentável no agronegócio.</p>
-            
-            <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/P_Pq6VbS0_E" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-details">
-                        <h4>Tecnologia ILPF - Embrapa</h4>
-                        <p>Como a integração de componentes arbóreos neutraliza as emissões de metano e dióxido de carbono na agropecuária.</p>
-                    </div>
-                </div>
+    // Recalcula as métricas globais
+    atualizarMetricas();
+}
 
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/1v0TfOaD5k0" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-details">
-                        <h4>Agricultura de Precisão</h4>
-                        <p>Análise de dados gerados por maquinários conectados para aplicação localizada de insumos, reduzindo desperdícios.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+function adicionarLog(mensagem) {
+    const logSistema = document.getElementById('log-sistema');
+    const timestamp = new Date().toLocaleTimeString();
+    logSistema.innerHTML = `[${timestamp}] ${mensagem}`;
+}
 
-        <section id="quiz-section" class="quiz-container">
-            <h2>🏆 Quiz AgroSustentável</h2>
-            <p>Teste seus conhecimentos sobre o meio ambiente, leis florestais e tecnologia no campo.</p>
-            
-            <div id="quiz-box">
-                <div id="question-container">
-                    <h3 id="question-text">Carregando pergunta...</h3>
-                    <div id="answer-buttons" class="btn-grid-quiz">
-                        </div>
-                </div>
-                <div id="quiz-controls" class="hide">
-                    <button id="next-btn" class="btn-next" onclick="proximaPergunta()">Próxima Pergunta</button>
-                </div>
-            </div>
-            <div id="score-container" class="hide">
-                <h3>Quiz Finalizado!</h3>
-                <p id="score-text">Você acertou 0 de 0 perguntas.</p>
-                <button class="btn-restart" onclick="reiniciarQuiz()">Jogar Novamente</button>
-            </div>
-        </section>
+function atualizarMetricas() {
+    let totalArvores = 0;
+    let totalCO2 = 0.0;
+    let totalProd = 100; // Produtividade base de 100%
 
-        <section class="sources-block">
-            <h3>Fontes Bibliográficas Oficiais</h3>
-            <div class="sources-grid">
-                <a href="https://www.embrapa.br/" target="_blank" class="source-link">
-                    <strong>Embrapa</strong> Referência em pesquisa agropecuária de baixo carbono.
-                </a>
-                <a href="https://mapbiomas.org/" target="_blank" class="source-link">
-                    <strong>MapBiomas</strong> Dados geoespaciais e relatórios anuais de desmatamento.
-                </a>
-                <a href="https://www.sistemafaep.org.br/" target="_blank" class="source-link">
-                    <strong>FAEP / SENAR-PR</strong> Metodologia pedagógica e regulamentos do Agrinho.
-                </a>
-                <a href="https://www.gov.br/mma/" target="_blank" class="source-link">
-                    <strong>Ministério do Meio Ambiente</strong> Legislação ambiental e Código Florestal brasileiro.
-                </a>
-            </div>
-        </section>
-    </main>
+    // Soma os impactos de cada tecnologia ativa
+    for (const chave in estadoSimulador) {
+        if (estadoSimulador[chave].ativo) {
+            totalArvores += estadoSimulador[chave].arvores;
+            totalCO2 += estadoSimulador[chave].co2;
+            totalProd += estadoSimulador[chave].prod;
+        }
+    }
 
-    <footer>
-        <p>Agrinho 2026 — Plataforma de Conscientização AgroAmbiental</p>
-    </footer>
+    // Atualiza os elementos na tela
+    document.getElementById('m-arvores').innerText = totalArvores.toLocaleString('pt-BR');
+    document.getElementById('m-co2').innerText = `${totalCO2.toFixed(1)} t`;
+    document.getElementById('m-prod').innerText = `${totalProd}%`;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+
+// ==========================================
+// 2. LÓGICA DO QUIZ AGROSUSTENTÁVEL
+// ==========================================
+
+// Banco de perguntas focado no tema e nas fontes descritas no HTML
+const bancoPerguntas = [
+    {
+        pergunta: "De acordo com o Código Florestal brasileiro, quais áreas são destinadas a salvaguardar os recursos hídricos e a estabilidade geológica?",
+        respostas: [
+            { texto: "Reserva Legal e Áreas Urbanas", correta: false },
+            { texto: "Áreas de Preservação Permanente (APPs) e Reserva Legal", correta: true },
+            { texto: "Zonas de Amortecimento Industriais", correta: false },
+            { texto: "Apenas propriedades latifundiárias de monocultura", correta: false }
+        ]
+    },
+    {
+        pergunta: "Qual é a principal vantagem ambiental da tecnologia ILPF (Integração Lavoura-Pecuária-Floresta) promovida pela Embrapa?",
+        respostas: [
+            { texto: "Maximizar o desmatamento para a entrada de maquinário pesado", correta: false },
+            { texto: "Otimizar o espaço e promover a fixação biológica de carbono, mitigando gases estufa", correta: true },
+            { texto: "Substituir completamente a produção vegetal por criação de gado de corte", correta: false },
+            { texto: "Eliminar a necessidade de rotação de culturas na propriedade", correta: false }
+        ]
+    },
+    {
+        pergunta: "Como a Intensificação Tecnológica (ex: plantio direto na palha) ajuda a evitar a expansão do desmatamento?",
+        respostas: [
+            { texto: "Ela força o agricultor a buscar novas terras a cada safra", correta: false },
+            { texto: "Ela permite obter mais safras no mesmo espaço, poupando a abertura de florestas nativas", correta: true },
+            { texto: "Ela reduz a produtividade, tornando a terra inutilizável", correta: false },
+            { texto: "Ela exige a compactação severa do solo para funcionar", correta: false }
+        ]
+    },
+    {
+        pergunta: "Qual ferramenta geoespacial listada nas fontes oficiais ajuda a monitorar em tempo real dados de desmatamento e uso do solo no Brasil?",
+        respostas: [
+            { texto: "MapBiomas", correta: true },
+            { texto: "Google Tradutor", correta: false },
+            { texto: "Fórum Econômico Mundial", correta: false },
+            { texto: "Censo Demográfico do IBGE", correta: false }
+        ]
+    }
+];
+
+let indicePerguntaAtual = 0;
+let pontuacao = 0;
+
+// Elementos do DOM do Quiz
+const questionContainer = document.getElementById('question-container');
+const questionTextElement = document.getElementById('question-text');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const quizControls = document.getElementById('quiz-controls');
+const scoreContainer = document.getElementById('score-container');
+const scoreTextElement = document.getElementById('score-text');
+
+// Inicializa o quiz quando a página carregar
+window.addEventListener('DOMContentLoaded', () => {
+    iniciarQuiz();
+});
+
+function iniciarQuiz() {
+    indicePerguntaAtual = 0;
+    pontuacao = 0;
+    scoreContainer.classList.add('hide');
+    scoreContainer.style.display = 'none';
+    questionContainer.classList.remove('hide');
+    questionContainer.style.display = 'block';
+    definirProximaPergunta();
+}
+
+function definirProximaPergunta() {
+    resetarEstadoQuiz();
+    mostrarPergunta(bancoPerguntas[indicePerguntaAtual]);
+}
+
+function mostrarPergunta(perguntaObjeto) {
+    questionTextElement.innerText = perguntaObjeto.pergunta;
+    
+    perguntaObjeto.respostas.forEach(resposta => {
+        const botao = document.createElement('button');
+        botao.innerText = resposta.texto;
+        botao.classList.add('btn-quiz-opt'); // Adicione estilo para os botões de opção no CSS
+        
+        // Estilos básicos padrão para os botões do quiz
+        botao.style.padding = "12px";
+        botao.style.margin = "5px 0";
+        botao.style.border = "1px solid #ccc";
+        botao.style.borderRadius = "6px";
+        botao.style.cursor = "pointer";
+        botao.style.textAlign = "left";
+        botao.style.backgroundColor = "#fff";
+        botao.style.transition = "all 0.2s ease";
+
+        if (resposta.correta) {
+            botao.dataset.correta = resposta.correta;
+        }
+        botao.addEventListener('click', selecionarResposta);
+        answerButtonsElement.appendChild(botao);
+    });
+}
+
+function resetarEstadoQuiz() {
+    quizControls.classList.add('hide');
+    quizControls.style.display = 'none';
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+    }
+}
+
+function selecionarResposta(e) {
+    const botaoSelecionado = e.target;
+    const ehCorreto = botaoSelecionado.dataset.correta === "true";
+    
+    if (ehCorreto) {
+        pontuacao++;
+        botaoSelecionado.style.backgroundColor = "#2ecc71"; // Verde para correto
+        botaoSelecionado.style.color = "#fff";
+    } else {
+        botaoSelecionado.style.backgroundColor = "#e74c3c"; // Vermelho para errado
+        botaoSelecionado.style.color = "#fff";
+    }
+
+    // Revela a resposta correta para o usuário e desativa cliques adicionais
+    Array.from(answerButtonsElement.children).forEach(botao => {
+        if (botao.dataset.correta === "true") {
+            botao.style.backgroundColor = "#2ecc71";
+            botao.style.color = "#fff";
+        }
+        botao.disabled = true;
+    });
+
+    // Gerencia o fluxo das perguntas
+    if (bancoPerguntas.length > indicePerguntaAtual + 1) {
+        quizControls.classList.remove('hide');
+        quizControls.style.display = 'block';
+    } else {
+        // Fim do quiz após um breve delay para visualização do resultado
+        setTimeout(mostrarResultadoFinal, 1500);
+    }
+}
+
+function proximaPergunta() {
+    indicePerguntaAtual++;
+    definirProximaPergunta();
+}
+
+function mostrarResultadoFinal() {
+    questionContainer.classList.add('hide');
+    questionContainer.style.display = 'none';
+    quizControls.classList.add('hide');
+    quizControls.style.display = 'none';
+    
+    scoreContainer.classList.remove('hide');
+    scoreContainer.style.display = 'block';
+    scoreTextElement.innerText = `Você acertou ${pontuacao} de ${bancoPerguntas.length} perguntas.`;
+}
+
+function reiniciarQuiz() {
+    iniciarQuiz();
+}
