@@ -1,148 +1,30 @@
-// CONTADORES ANIMADOS
+// Valores globais reativos
+let variavelArvores = 0;
+let pesoCarbono = 0.0;
+let indiceProducao = 100;
 
-const numeros = document.querySelectorAll(".numero");
+function activarTecnologia(tipo) {
+    const log = document.getElementById("log-sistema");
+    
+    if (tipo === 'ilpf') {
+        variavelArvores += 320;
+        pesoCarbono += 8.4;
+        indiceProducao += 15;
+        log.innerText = "[OK]: Sistema de Integração Lavoura-Pecuária-Floresta consolidado no bioma.";
+    } 
+    else if (tipo === 'biologicos') {
+        pesoCarbono += 3.1;
+        indiceProducao += 10;
+        log.innerText = "[OK]: Substituição de defensivos químicos por agentes biológicos ativa.";
+    } 
+    else if (tipo === 'satelite') {
+        variavelArvores += 750;
+        pesoCarbono += 18.2;
+        log.innerText = "[ALERTA]: Rastreamento via satélite integrado à rede de fiscalização local.";
+    }
 
-numeros.forEach(numero=>{
-
-let inicio = 0;
-const fim = parseInt(numero.dataset.num);
-
-const timer = setInterval(()=>{
-
-inicio++;
-
-numero.textContent = inicio;
-
-if(inicio >= fim){
-clearInterval(timer);
+    // Renderização dos dados nos elementos correspondentes
+    document.getElementById("m-arvores").innerText = variavelArvores;
+    document.getElementById("m-co2").innerText = pesoCarbono.toFixed(1) + " t";
+    document.getElementById("m-prod").innerText = indiceProducao + "%";
 }
-
-},20);
-
-});
-
-
-// QUIZ
-
-const perguntas = [
-
-{
-pergunta:"Qual é o objetivo da arborização?",
-respostas:[
-"Poluir rios",
-"Melhorar o meio ambiente",
-"Aumentar queimadas",
-"Destruir florestas"
-],
-correta:1
-},
-
-{
-pergunta:"O que reduz o desmatamento?",
-respostas:[
-"Queimadas",
-"Preservação ambiental",
-"Poluição",
-"Lixo"
-],
-correta:1
-},
-
-{
-pergunta:"Qual prática é sustentável?",
-respostas:[
-"Reciclagem",
-"Desmatamento",
-"Poluição",
-"Queimadas"
-],
-correta:0
-},
-
-{
-pergunta:"O que protege a biodiversidade?",
-respostas:[
-"Preservação dos habitats",
-"Queimadas",
-"Caça ilegal",
-"Poluição"
-],
-correta:0
-}
-
-];
-
-let atual = 0;
-let pontos = 0;
-
-const pergunta = document.getElementById("pergunta");
-const respostas = document.getElementById("respostas");
-const resultado = document.getElementById("resultado");
-
-function carregarPergunta(){
-
-if(atual >= perguntas.length){
-
-resultado.innerHTML = `
-<h2>🏆 Resultado Final</h2>
-<p>Você acertou ${pontos} de ${perguntas.length}</p>
-`;
-
-pergunta.style.display = "none";
-respostas.style.display = "none";
-
-return;
-}
-
-let questao = perguntas[atual];
-
-pergunta.textContent = questao.pergunta;
-
-respostas.innerHTML = "";
-
-questao.respostas.forEach((texto,index)=>{
-
-const btn = document.createElement("button");
-
-btn.textContent = texto;
-
-btn.onclick = ()=>{
-
-if(index === questao.correta){
-pontos++;
-}
-
-atual++;
-carregarPergunta();
-
-};
-
-respostas.appendChild(btn);
-
-});
-
-}
-
-carregarPergunta();
-
-
-// EFEITO SCROLL
-
-window.addEventListener("scroll",()=>{
-
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-
-const pos = card.getBoundingClientRect().top;
-
-if(pos < window.innerHeight - 100){
-
-card.style.opacity = "1";
-card.style.transform = "translateY(0px)";
-
-}
-
-});
-
-});
