@@ -1,91 +1,513 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Agrinho 2026 | AgroForte & Sustentável</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0b0f14;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero{
+max-width:900px;
+padding:20px;
+}
+
+.hero h1{
+font-size:4rem;
+color:#58ff8f;
+}
+
+.hero p{
+font-size:1.3rem;
+margin-top:20px;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+background:#39d353;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+section{
+padding:80px 10%;
+}
+
+.titulo{
+text-align:center;
+font-size:2.5rem;
+color:#58ff8f;
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#151c25;
+padding:25px;
+border-radius:20px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+color:#58ff8f;
+margin-bottom:10px;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.galeria img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+transition:.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+.video{
+display:flex;
+justify-content:center;
+}
+
+iframe{
+width:90%;
+max-width:900px;
+height:500px;
+border:none;
+border-radius:20px;
+}
+
+.quiz{
+max-width:800px;
+margin:auto;
+background:#151c25;
+padding:30px;
+border-radius:20px;
+}
+
+.quiz h3{
+margin-bottom:20px;
+}
+
+.quiz button{
+display:block;
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#222f3e;
+color:white;
+font-size:16px;
+}
+
+.quiz button:hover{
+background:#39d353;
+}
+
+#resultado{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+}
+
+footer{
+background:black;
+padding:40px;
+text-align:center;
+}
+
+footer a{
+color:#58ff8f;
+text-decoration:none;
+}
+
+.contador{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center;
+}
+
+.numero{
+font-size:3rem;
+color:#58ff8f;
+font-weight:bold;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="app-container">
-        
-        <aside class="sidebar">
-            <div class="brand">
-                <span class="logo-icon">🌱</span>
-                <h2>Agrinho 2026</h2>
-            </div>
-            
-            <div class="sidebar-info">
-                <h3>O Desafio</h3>
-                <p>Produzir com eficiência combatendo o desmatamento ilegal e protegendo a biodiversidade.</p>
-            </div>
+<header>
+<div class="hero">
 
-            <div class="sources-panel">
-                <h3>Fontes Oficiais</h3>
-                <a href="https://www.sistemafaep.org.br/" target="_blank">Portal Agrinho / FAEP</a>
-                <a href="https://www.embrapa.br/" target="_blank">Embrapa Sustentável</a>
-                <a href="https://mapbiomas.org/" target="_blank">MapBiomas Brasil</a>
-                <a href="https://www.gov.br/mma/" target="_blank">Ministério do Meio Ambiente</a>
-            </div>
-        </aside>
+<h1>🌱 AGRINHO 2026</h1>
 
-        <main class="main-content">
-            
-            <header class="main-header">
-                <h1>AGRO FORTE, FUTURO SUSTENTÁVEL</h1>
-                <p>Equilíbrio real entre produção agrícola e preservação ambiental</p>
-            </header>
+<h2>Agro Forte, Futuro Sustentável</h2>
 
-            <section class="metrics-grid">
-                <div class="metric-card" id="card-arvores">
-                    <span class="metric-label">Árvores Salvas</span>
-                    <span class="metric-value" id="val-arvores">0</span>
-                </div>
-                <div class="metric-card" id="card-co2">
-                    <span class="metric-label">CO₂ Sequestrado</span>
-                    <span class="metric-value" id="val-co2">0.0 t</span>
-                </div>
-                <div class="metric-card" id="card-prod">
-                    <span class="metric-label">Produtividade</span>
-                    <span class="metric-value" id="val-prod">100%</span>
-                </div>
-            </section>
+<p>
+Equilíbrio entre produção agrícola,
+preservação ambiental,
+arborização e combate ao desmatamento.
+</p>
 
-            <div class="content-grid">
-                
-                <section class="glass-card game-box">
-                    <h2>Simulador de Decisões Tecnológicas</h2>
-                    <p>Ative projetos sustentáveis na sua área e veja o impacto ambiental e econômico acontecer em tempo real.</p>
-                    
-                    <div class="control-actions">
-                        <button class="btn-action" onclick="aplicarTecnologia('ilpf')">
-                            <strong>🌱 Ativar Sistema ILPF</strong>
-                            <span>Recupera pastagens e fixa carbono no solo</span>
-                        </button>
-                        
-                        <button class="btn-action" onclick="aplicarTecnologia('monitor')">
-                            <strong>🛰️ Monitoramento via Satélite</strong>
-                            <span>Identifica focos de desmatamento ilegal</span>
-                        </button>
-                        
-                        <button class="btn-action" onclick="aplicarTecnologia('floresta')">
-                            <strong>🌲 Reflorestamento de APP</strong>
-                            <span>Protege nascentes e atrai polinizadores</span>
-                        </button>
-                    </div>
+<a href="#sobre" class="btn">Explorar</a>
 
-                    <div id="terminal-feedback" class="terminal">
-                        [SISTEMA]: Aguardando entrada do administrador...
-                    </div>
-                </section>
+</div>
+</header>
 
-                <section class="glass-card media-box">
-                    <h2>Evidências Práticas</h2>
-                    
-                    <div class="media-item">
-                        <div class="video-responsive">
-                            <iframe src="https://www.youtube.com/embed/P_Pq6VbS0_E" allowfullscreen></iframe>
-                        </div>
-                        <p class="media-sub">Vídeo: Demonstração prática do modelo de Integração Floresta da Embrapa.</p>
-                    </div>
+<section id="sobre">
+
+<h2 class="titulo">🌎 O Futuro Depende do Equilíbrio</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🚜 Produção Sustentável</h3>
+<p>
+Produzir alimentos é essencial para abastecer a população,
+mas deve ocorrer com práticas responsáveis.
+</p>
+</div>
+
+<div class="card">
+<h3>🌳 Arborização</h3>
+<p>
+As árvores ajudam na qualidade do ar,
+na conservação da água e no equilíbrio climático.
+</p>
+</div>
+
+<div class="card">
+<h3>🦜 Biodiversidade</h3>
+<p>
+A preservação dos habitats naturais protege milhares de espécies.
+</p>
+</div>
+
+<div class="card">
+<h3>♻️ Meio Ambiente</h3>
+<p>
+Reciclagem, economia de água e energia fazem parte da sustentabilidade.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="titulo">📊 Impactos Positivos</h2>
+
+<div class="contador">
+
+<div>
+<div class="numero" data-num="100">0</div>
+<p>Árvores Plantadas</p>
+</div>
+
+<div>
+<div class="numero" data-num="80">0</div>
+<p>% Redução de Erosão</p>
+</div>
+
+<div>
+<div class="numero" data-num="90">0</div>
+<p>% Preservação de Nascentes</p>
+</div>
+
+<div>
+<div class="numero" data-num="75">0</div>
+<p>% Menos Desmatamento</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="titulo">🖼️ Galeria Ambiental</h2>
+
+<div class="galeria">
+
+<img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
+
+<img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+
+<img src="https://images.unsplash.com/photo-1472396961693-142e6e269027">
+
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="titulo">🎥 Vídeo Educativo</h2>
+
+<div class="video">
+
+<iframe
+src="https://www.youtube.com/embed/otUZe6pskYU"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="titulo">🎮 Quiz Sustentável</h2>
+
+<div class="quiz">
+
+<h3 id="pergunta"></h3>
+
+<div id="respostas"></div>
+
+<div id="resultado"></div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="titulo">💡 Como Ajudar?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌳 Plantar Árvores</h3>
+<p>Ajuda a recuperar áreas degradadas.</p>
+</div>
+
+<div class="card">
+<h3>💧 Economizar Água</h3>
+<p>Preserva recursos naturais.</p>
+</div>
+
+<div class="card">
+<h3>♻️ Reciclar</h3>
+<p>Reduz a quantidade de resíduos.</p>
+</div>
+
+<div class="card">
+<h3>🚫 Evitar Queimadas</h3>
+<p>Protege o solo e a biodiversidade.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>📚 Fontes Utilizadas</h2>
+
+<p>
+Programa Agrinho – Sistema FAEP/SENAR<br>
+https://www.sistemafaep.org.br/agrinho/
+</p>
+
+<br>
+
+<p>
+Tema Agrinho 2026 – Governo do Paraná<br>
+https://www.parana.pr.gov.br
+</p>
+
+<br>
+
+<p>
+ONU Meio Ambiente<br>
+https://www.unep.org
+</p>
+
+<br>
+
+<p>
+FAO – Organização das Nações Unidas para Alimentação e Agricultura<br>
+https://www.fao.org
+</p>
+
+</footer>
+
+<script>
+
+const numeros = document.querySelectorAll('.numero');
+
+numeros.forEach(numero=>{
+
+let inicio=0;
+
+let fim=numero.dataset.num;
+
+let contador=setInterval(()=>{
+
+inicio++;
+
+numero.textContent=inicio;
+
+if(inicio>=fim){
+
+clearInterval(contador);
+
+}
+
+},20);
+
+});
+
+const perguntas=[
+
+{
+pergunta:"Qual é o principal objetivo da arborização?",
+respostas:[
+"Produzir mais lixo",
+"Melhorar o meio ambiente",
+"Aumentar queimadas",
+"Poluir rios"
+],
+correta:1
+},
+
+{
+pergunta:"O que ajuda a reduzir o desmatamento?",
+respostas:[
+"Queimadas",
+"Descarte irregular",
+"Preservação ambiental",
+"Poluição"
+],
+correta:2
+},
+
+{
+pergunta:"Qual prática é sustentável?",
+respostas:[
+"Reciclagem",
+"Desmatamento",
+"Poluição",
+"Queimadas"
+],
+correta:0
+}
+
+];
+
+let atual=0;
+let pontos=0;
+
+function carregarPergunta(){
+
+if(atual===perguntas.length){
+
+document.querySelector('.quiz').innerHTML=
+`<h2>🏆 Você fez ${pontos} de ${perguntas.length} pontos!</h2>`;
+
+return;
+}
+
+let p=perguntas[atual];
+
+document.getElementById('pergunta').textContent=p.pergunta;
+
+let respostas='';
+
+p.respostas.forEach((r,index)=>{
+
+respostas+=`
+<button onclick="responder(${index})">
+${r}
+</button>
+`;
+
+});
+
+document.getElementById('respostas').innerHTML=respostas;
+
+}
+
+function responder(indice){
+
+if(indice===perguntas[atual].correta){
+
+pontos++;
+
+}
+
+atual++;
+
+carregarPergunta();
+
+}
+
+carregarPergunta();
+
+</script>
+
+</body>
+</html>
