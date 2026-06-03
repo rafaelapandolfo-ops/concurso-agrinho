@@ -4,95 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concurso Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
-    <style>
-        /* Estilização Geral (CSS) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f9f4;
-            color: #333;
-        }
-        header {
-            background-color: #2e7d32;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            font-style: italic;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        section {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #1b5e20;
-            border-bottom: 2px solid #2e7d32;
-            padding-bottom: 0.5rem;
-        }
-        .media-container {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-        /* Responsividade para Imagens */
-        .media-container img {
-            max-width: 1000%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        /* Responsividade para Vídeos (YouTube/Vimeo) */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
-            padding-top: 25px;
-            height: 0;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 6px;
-            border: none;
-        }
-        .fontes-list {
-            list-style-type: square;
-            padding-left: 1.5rem;
-        }
-        .fontes-list a {
-            color: #2e7d32;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .fontes-list a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: #1b5e20;
-            color: white;
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -105,24 +17,32 @@
 
         <section id="introducao">
             <h2>Agro Forte e Futuro Sustentável</h2>
-            <p>O grande desafio do século XXI é garantir a segurança alimentar da população global enquanto protegemos os recursos naturais do nosso planeta. Um <strong>Agro Forte</strong> não caminha separado da preservação; pelo contrário, ele depende do equilíbrio ecológico, da saúde do solo e da regularidade das chuvas para prosperar.</p>
+            <p>O grande desafio atual é garantir a segurança alimentar da população global enquanto protegemos os recursos naturais do nosso planeta. Um <strong>Agro Forte</strong> não caminha separado da preservação; pelo contrário, ele depende do equilíbrio ecológico, da saúde do solo e da regularidade das chuvas para prosperar.</p>
             
             <div class="media-container">
-                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad49f?w=800" alt="Plantação sustentável com tecnologia de drones">
-                <p><em>Legenda: O uso da tecnologia no campo auxilia na precisão e na sustentabilidade da produção.</em></p>
+                <img src="https://www.embrapa.br/image/journal/article?img_id=82361685" alt="Tecnologia e monitoramento de lavoura sustentável">
+                <em>Legenda: O monitoramento inteligente e a tecnologia no campo auxiliam na precisão e na conservação ambiental. (Fonte: Embrapa)</em>
             </div>
         </section>
 
         <section id="meio-ambiente">
             <h2>Meio Ambiente e o Combate ao Desmatamento</h2>
             <p>A preservação das florestas nativas e da biodiversidade é peça-chave para mitigar as mudanças climáticas. No Brasil, o Código Florestal estabelece regras rígidas de preservação, como as Áreas de Preservação Permanente (APPs) e as Reservas Legais.</p>
-            <p>Práticas modernas como a <strong>ILPF (Integração Lavoura-Pecuária-Floresta)</strong> mostram que é possível intensificar a produção em áreas já abertas, recuperando pastagens degradadas e evitando a necessidade de novos desmatamentos.</p>
+            <p>Práticas modernas como a <strong>ILPF (Integração Lavoura-Pecuária-Floresta)</strong> provam que é possível intensificar a produção em áreas já abertas, recuperando pastagens degradadas e evitando completamente a necessidade de novos desmatamentos.</p>
             
             <div class="media-container">
-                <h3>Vídeo Informativo: Tecnologias Sustentáveis no Campo</h3>
+                <h3>Vídeo: Entenda o que é o sistema ILPF da Embrapa</h3>
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/P_Pq6VbS0_E" allowfullscreen></iframe>
                 </div>
+                <em>Legenda: Vídeo explicativo sobre como integrar floresta e produção reduz o impacto ambiental.</em>
+            </div>
+
+            <div class="simulador-box">
+                <h3>Simulador de Impacto Positivo</h3>
+                <p>Clique no botão abaixo para simular a recuperação de pastagens degradadas:</p>
+                <button class="btn-sustentavel" onclick="calcularImpacto()">Recuperar 1 Hectare de Solo</button>
+                <div id="contador-resultado"></div>
             </div>
         </section>
 
@@ -132,19 +52,19 @@
             
             <ul class="fontes-list">
                 <li>
-                    <strong>Sistema FAEP/SENAR-PR (Portal Agrinho):</strong> Espaço oficial do programa com regulamentos e materiais pedagógicos. <br>
+                    <strong>Sistema FAEP/SENAR-PR (Portal Agrinho):</strong> Regulamentos e materiais pedagógicos oficiais do programa.<br>
                     <a href="https://www.sistemafaep.org.br/" target="_blank">Visitar site do Sistema FAEP</a>
                 </li>
                 <li>
-                    <strong>Embrapa (Empresa Brasileira de Pesquisa Agropecuária):</strong> Referência global em tecnologias para a sustentabilidade do agro. <br>
+                    <strong>Embrapa (Empresa Brasileira de Pesquisa Agropecuária):</strong> Referência global em tecnologias para a sustentabilidade do agro.<br>
                     <a href="https://www.embrapa.br/" target="_blank">Visitar site da Embrapa</a>
                 </li>
                 <li>
-                    <strong>MapBiomas:</strong> Plataforma que monitora o uso da terra e as mudanças na cobertura vegetal do Brasil. <br>
+                    <strong>MapBiomas:</strong> Plataforma que monitora em tempo real o uso da terra e a cobertura vegetal do Brasil.<br>
                     <a href="https://mapbiomas.org/" target="_blank">Visitar site do MapBiomas</a>
                 </li>
                 <li>
-                    <strong>Ministério do Meio Ambiente e Mudança do Clima:</strong> Dados governamentais sobre combate ao desmatamento e conservação. <br>
+                    <strong>Ministério do Meio Ambiente e Mudança do Clima:</strong> Dados governamentais sobre combate ao desmatamento.<br>
                     <a href="https://www.gov.br/mma/" target="_blank">Visitar site do MMA</a>
                 </li>
             </ul>
@@ -156,6 +76,6 @@
         <p>&copy; 2026 - Projeto Desenvolvido para o Concurso Agrinho | Escola Conectada</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
-
