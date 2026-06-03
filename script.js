@@ -1,40 +1,41 @@
-// Variáveis iniciais do Estado do Jogo
-let arvoresSalvas = 0;
-let taxaDesmatamento = 100;
-let eficienciaProducao = 100;
+// Variáveis do Estado do Minijogo
+let totalArvores = 0;
+let hectaresEvitados = 0;
+let experienciaSustentavel = 100;
 
-function jogarAcao(tipoAcao) {
-    const feedback = document.getElementById("game-feedback");
+function jogarTurno(acao) {
+    const consoleOutput = document.getElementById("game-console");
     
-    if (tipoAcao === 'ilpf') {
-        arvoresSalvas += 150;
-        eficienciaProducao += 25;
-        taxaDesmatamento -= 15;
-        feedback.innerHTML = `> [SUCESSO]: Sistema ILPF ativado! Você integrou árvores e gado na mesma área. A produção subiu para ${eficienciaProducao}% e poupou novas áreas de desmatamento! 🌾🌲`;
+    if (acao === 'ilpf') {
+        totalArvores += 240;
+        hectaresEvitados += 35;
+        experienciaSustentavel += 50;
+        consoleOutput.innerHTML = `> [ACAO CONCLUIDA]: Implementando sistemas ILPF. Você otimizou a produção de grãos e carnes sem derrubar nenhuma nova árvore. +240 Árvores Protegidas e +50 XP!`;
     } 
-    else if (tipoAcao === 'satelite') {
-        arvoresSalvas += 300;
-        taxaDesmatamento -= 40;
-        feedback.innerHTML = `> [ALERTA DE PRECISÃO]: Satélites ligados. Focos de desmatamento ilegal foram identificados e parados pelas autoridades. Taxa caiu para ${taxaDesmatamento < 0 ? 0 : taxaDesmatamento}%! 🛰️🛑`;
+    else if (acao === 'satelite') {
+        totalArvores += 500;
+        hectaresEvitados += 110;
+        experienciaSustentavel += 75;
+        consoleOutput.innerHTML = `> [SISTEMA ALERTA]: Sensores de satélite detectaram atividade suspeita na fronteira agrícola. O desmatamento ilegal foi contido imediatamente. +110 Hectares Protegidos!`;
     } 
-    else if (tipoAcao === 'reserva') {
-        arvoresSalvas += 500;
-        eficienciaProducao -= 5; // Simula o isolamento da área
-        taxaDesmatamento -= 20;
-        feedback.innerHTML = `> [CONSERVAÇÃO]: Reserva Legal cercada e protegida. Mais 500 árvores nativas estão seguras fornecendo biodiversidade e água. 🌳💧`;
+    else if (acao === 'codigo') {
+        totalArvores += 850;
+        hectaresEvitados += 70;
+        experienciaSustentavel += 100;
+        consoleOutput.innerHTML = `> [CONSERVAÇÃO ATIVADA]: Reserva Legal mapeada e delimitada conforme as regras federais. A biodiversidade local agradece. +850 Árvores Salvas e +100 XP!`;
     }
 
-    // Correção para não negativar a taxa de desmatamento
-    if (taxaDesmatamento < 0) taxaDesmatamento = 0;
+    // Aplica efeito visual de atualização nos elementos gráficos da tela
+    atualizarInterface();
+}
 
-    // Atualiza os valores na interface gráfica do usuário
-    document.getElementById("score-arvores").innerText = arvoresSalvas;
-    document.getElementById("score-desmatamento").innerText = taxaDesmatamento + "%";
-    document.getElementById("score-producao").innerText = eficienciaProducao + "%";
-
-    // Vitória total do jogador
-    if (taxaDesmatamento === 0) {
-        feedback.innerHTML += `<br><br>🏆 <strong>MISSÃO CUMPRIDA!</strong> Você alcançou o equilíbrio perfeito: Agro forte e Desmatamento Ilegal ZERO!`;
-        feedback.style.borderColor = "#4fec7a";
+function atualizarInterface() {
+    document.getElementById("txt-arvores").innerText = totalArvores;
+    document.getElementById("txt-desmatamento").innerText = hectaresEvitados + " ha";
+    document.getElementById("txt-pontos").innerText = experienciaSustentavel + " XP";
+    
+    // Altera dinamicamente a cor da fonte do painel de controle conforme ganha pontos
+    if(experienciaSustentavel >= 300) {
+        document.getElementById("txt-pontos").style.color = "#00ff66";
     }
 }
