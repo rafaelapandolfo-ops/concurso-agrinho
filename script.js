@@ -1,9 +1,3 @@
-// =========================================================================
-// CONCURSO AGRINHO 2026 - CATEGORIA PROGRAMAÇÃO (FRONT-END)
-// TEMA: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente
-// =========================================================================
-
-// --- MAPEAMENTO DE ELEMENTOS DO DOM (Evita redundância e melhora a performance) ---
 const elArvores = document.getElementById("m-arvores");
 const elCo2 = document.getElementById("m-co2");
 const elProd = document.getElementById("m-prod");
