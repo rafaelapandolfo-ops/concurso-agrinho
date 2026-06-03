@@ -1,21 +1,24 @@
 // =========================================================================
-// SIMULADOR DE IMPACTO E QUIZ INTERATIVO - AGRINHO 2026
+// SIMULADOR DE IMPACTO - CONCURSO AGRINHO 2026
 // =========================================================================
 
-// Mapeamento dos elementos da tela (DOM)
+// Mensagem de teste para o painel do programador (F12 no navegador)
+console.log("O ficheiro script.js foi carregado com sucesso!");
+
+// Variáveis globais do simulador
+let arvoresContador = 0;
+let toneladasCarbono = 0.0;
+let taxaProdutividade = 100;
+
+// Mapeamento dos elementos da interface (DOM)
 const elArvores = document.getElementById("m-arvores");
 const elCo2 = document.getElementById("m-co2");
 const elProd = document.getElementById("m-prod");
 const logSistema = document.getElementById("log-sistema");
 
-// Variáveis de controle do Simulador
-let arvoresContador = 0;
-let toneladasCarbono = 0.0;
-let taxaProdutividade = 100;
-
-// Função corrigida para português (ativarTecnologia)
-function activarTecnologia(tipo) { // Mantida a assinatura interna ou ajustada abaixo
-    // Validando se os elementos existem na tela para não travar o código
+// Função responsável por processar a tecnologia ativada
+function activarTecnologia(tipo) {
+    // Se algum elemento não existir na página, o código para aqui para não gerar erros
     if (!logSistema || !elArvores || !elCo2 || !elProd) return;
 
     if (tipo === 'ilpf') {
@@ -33,25 +36,35 @@ function activarTecnologia(tipo) { // Mantida a assinatura interna ou ajustada a
         logSistema.innerText = "[ALERTA]: Rastreamento geoespacial em tempo real conectado com a fiscalização.";
     }
 
-    // Atualiza os dados na tela
+    // Atualização dos textos no ecrã
     elArvores.innerText = arvoresContador;
     elCo2.innerText = toneladasCarbono.toFixed(1) + " t";
     elProd.innerText = taxaProdutividade + "%";
 }
 
-// Vinculação dos botões via JavaScript (Exigência do Item 6.1.15 do Edital)
+// Ouvinte que deteta quando a página carregou para ativar os botões de forma segura
 document.addEventListener("DOMContentLoaded", () => {
     const btnIlpf = document.getElementById("btn-ilpf");
     const btnBiologicos = document.getElementById("btn-biologicos");
     const btnSatelite = document.getElementById("btn-satelite");
 
-    if (btnIlpf) btnIlpf.addEventListener("click", () => activarTecnologia('ilpf'));
-    if (btnBiologicos) btnBiologicos.addEventListener("click", () => activarTecnologia('biologicos'));
-    if (btnSatelite) btnSatelite.addEventListener("click", () => activarTecnologia('satelite'));
+    // Vincula o clique de cada botão à função correspondente
+    if (btnIlpf) {
+        btnIlpf.addEventListener("click", () => activarTecnologia('ilpf'));
+        console.log("Botão ILPF configurado.");
+    }
+    if (btnBiologicos) {
+        btnBiologicos.addEventListener("click", () => activarTecnologia('biologicos'));
+        console.log("Botão Biológicos configurado.");
+    }
+    if (btnSatelite) {
+        btnSatelite.addEventListener("click", () => activarTecnologia('satelite'));
+        console.log("Botão Satélite configurado.");
+    }
 });
 
 // =========================================================================
-// LOGÍSTICA DO INTERACTIVE QUIZ
+// ESTRUTURA DO INTERACTIVE QUIZ
 // =========================================================================
 const questoes = [
     {
@@ -84,4 +97,3 @@ const questoes = [
 ];
 
 let indexPerguntaAtual = 0;
-// Aqui você pode dar continuidade às funções de renderizar as perguntas do Quiz!
