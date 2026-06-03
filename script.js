@@ -1,3 +1,4 @@
+// --- MAPEAMENTO DE ELEMENTOS DO DOM (Evita redundância e melhora a performance) ---
 const elArvores = document.getElementById("m-arvores");
 const elCo2 = document.getElementById("m-co2");
 const elProd = document.getElementById("m-prod");
