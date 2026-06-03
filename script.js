@@ -1,30 +1,54 @@
-// Valores globais reativos
-let variavelArvores = 0;
-let pesoCarbono = 0.0;
-let indiceProducao = 100;
+// VARIÁVEIS DO SIMULADOR DE IMPACTO
+let arvoresContador = 0;
+let toneladasCarbono = 0.0;
+let taxaProdutividade = 100;
 
 function activarTecnologia(tipo) {
     const log = document.getElementById("log-sistema");
-    
     if (tipo === 'ilpf') {
-        variavelArvores += 320;
-        pesoCarbono += 8.4;
-        indiceProducao += 15;
-        log.innerText = "[OK]: Sistema de Integração Lavoura-Pecuária-Floresta consolidado no bioma.";
-    } 
-    else if (tipo === 'biologicos') {
-        pesoCarbono += 3.1;
-        indiceProducao += 10;
-        log.innerText = "[OK]: Substituição de defensivos químicos por agentes biológicos ativa.";
-    } 
-    else if (tipo === 'satelite') {
-        variavelArvores += 750;
-        pesoCarbono += 18.2;
-        log.innerText = "[ALERTA]: Rastreamento via satélite integrado à rede de fiscalização local.";
+        arvoresContador += 350; toneladasCarbono += 7.5; taxaProdutividade += 20;
+        log.innerText = "[OK]: Sistema ILPF implementado. Nitrogênio fixado e pastagem recuperada.";
+    } else if (tipo === 'biologicos') {
+        toneladasCarbono += 2.8; taxaProdutividade += 10;
+        log.innerText = "[OK]: Inoculantes biológicos ativos. Redução da dependência de químicos.";
+    } else if (tipo === 'satelite') {
+        arvoresContador += 800; toneladasCarbono += 15.2;
+        log.innerText = "[ALERTA]: Rastreamento geoespacial em tempo real conectado com a fiscalização.";
     }
-
-    // Renderização dos dados nos elementos correspondentes
-    document.getElementById("m-arvores").innerText = variavelArvores;
-    document.getElementById("m-co2").innerText = pesoCarbono.toFixed(1) + " t";
-    document.getElementById("m-prod").innerText = indiceProducao + "%";
+    document.getElementById("m-arvores").innerText = arvoresContador;
+    document.getElementById("m-co2").innerText = toneladasCarbono.toFixed(1) + " t";
+    document.getElementById("m-prod").innerText = taxaProdutividade + "%";
 }
+
+// LOGÍSTICA DO INTERACTIVE QUIZ
+const questoes = [
+    {
+        pergunta: "Qual sistema combina lavoura, pecuária e árvores na mesma área?",
+        respostas: [
+            { texto: "Monocultura intensiva", correta: false },
+            { texto: "Sistema ILPF", correta: true },
+            { texto: "Desmatamento planejado", correta: false },
+            { texto: "Pecuária extensiva tradicional", correta: false }
+        ]
+    },
+    {
+        pergunta: "Por que o desmatamento ilegal prejudica diretamente as plantações?",
+        respostas: [
+            { texto: "Porque ele limpa o terreno", correta: false },
+            { texto: "Não prejudica, ajuda no espaço", correta: false },
+            { texto: "Altera o ciclo de chuvas e reduz a umidade", correta: true },
+            { texto: "Aumenta os nutrientes naturais do solo", correta: false }
+        ]
+    },
+    {
+        pergunta: "O que o Código Florestal Brasileiro exige das propriedades rurais?",
+        respostas: [
+            { texto: "Desmatar 100% da área para produção", correta: false },
+            { texto: "Manutenção de Reserva Legal e APPs", correta: true },
+            { texto: "Uso exclusivo de defensivos químicos sintéticos", correta: false },
+            { texto: "Plantio apenas de espécies exóticas", correta: false }
+        ]
+    }
+];
+
+let indexPerguntaAtual = 0;
