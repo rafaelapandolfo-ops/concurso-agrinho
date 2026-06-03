@@ -3,94 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoAgro Simulator 2026 - Concurso Agrinho</title>
+    <title>Agrinho 2026 | Agro Forte e Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>AGRO FORTE: MISSÃO FUTURO SUSTENTÁVEL</h1>
-        <p>Concurso Agrinho 2026 • Domine o equilíbrio entre produção e meio ambiente</p>
+    <header class="hero-header">
+        <div class="header-overlay">
+            <span class="badge">CONCURSO AGRINHO 2026</span>
+            <h1>AGRO FORTE, FUTURO SUSTENTÁVEL</h1>
+            <p>Descubra como a tecnologia e o equilíbrio ambiental estão transformando o campo brasileiro.</p>
+            <a href="#jogar" class="btn-glow">BORA JOGAR?</a>
+        </div>
     </header>
 
-    <div class="game-container">
-        
-        <div class="scoreboard">
-            <div class="stat-box">
-                <span class="stat-title">🌳 Árvores Salvas / Protegidas</span>
-                <span class="stat-value" id="score-arvores">0</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-title">📉 Taxa de Desmatamento Alvo</span>
-                <span class="stat-value" id="score-desmatamento" style="color: #ff5252;">100%</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-title">🚜 Eficiência da Produção</span>
-                <span class="stat-value" id="score-producao" style="color: #4caf50;">100%</span>
+    <section class="dashboard">
+        <div class="stat-card">
+            <div class="stat-icon">🌲</div>
+            <div>
+                <h3>Árvores Protegidas</h3>
+                <p id="txt-arvores">0</p>
             </div>
         </div>
-
-        <main class="game-grid">
-            
-            <div class="game-panel-left">
-                <section class="card">
-                    <h2>Fase 1: O Desafio do Desmatamento Zero</h2>
-                    <p>O desmatamento ilegal destrói a biodiversidade, altera o ciclo de chuvas e prejudica o próprio produtor rural. Para manter o <strong>Agro Forte</strong>, precisamos usar tecnologia para produzir mais utilizando menos espaço.</p>
-                    
-                    <div class="action-zone">
-                        <h3>Escolha sua Ação Sustentável:</h3>
-                        <button class="btn-game btn-ilpf" onclick="jogarAcao('ilpf')">🌱 Implementar ILPF (+ Produção - Espaço)</button>
-                        <button class="btn-game btn-satelite" onclick="jogarAcao('satelite')">🛰️ Ativar Monitoramento por Satélite (- Desmatamento)</button>
-                        <button class="btn-game btn-reserva" onclick="jogarAcao('reserva')">🌲 Isolar Área de Reserva Legal (+ Árvores Protegidas)</button>
-                    </div>
-
-                    <div id="game-feedback" class="feedback-box">
-                        Clique em uma ação acima para iniciar a gestão da sua fazenda sustentável.
-                    </div>
-                </section>
-
-                <section class="card text-info">
-                    <h2>Dados e Informações Essenciais</h2>
-                    <ul>
-                        <li><strong>O Código Florestal:</strong> Obriga propriedades rurais a preservarem de 20% (Mata Atlântica/Cerrado) a 80% (Amazônia) de vegetação nativa.</li>
-                        <li><strong>A Importância das Árvores:</strong> Uma única árvore adulta pode absorver cerca de 22 kg de gás carbônico por ano e bombear mais de 1.000 litros de água de volta para a atmosfera diariamente através da evapotranspiração.</li>
-                        <li><strong>Solo Vivo:</strong> O desmatamento expõe o solo à erosão, destruindo os nutrientes e gerando prejuízos bilionários para a agricultura a longo prazo.</li>
-                    </ul>
-                </section>
+        <div class="stat-card">
+            <div class="stat-icon alert">🔥</div>
+            <div>
+                <h3>Desmatamento Evitado</h3>
+                <p id="txt-desmatamento">0 ha</p>
             </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon success">🔋</div>
+            <div>
+                <h3>Pontos de Sustentabilidade</h3>
+                <p id="txt-pontos">100 XP</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="game-panel-right">
-                <section class="card media-card">
-                    <h2>Monitoramento em Tempo Real</h2>
-                    <img src="https://www.embrapa.br/image/journal/article?img_id=82361685" alt="Monitoramento de Lavoura Sustentável" class="game-img">
-                    <p class="caption">Imagem: Tecnologias de sensoriamento remoto ajudam a rastrear a saúde das florestas e lavouras. (Fonte: Embrapa)</p>
-                </section>
+    <main class="main-layout">
+        
+        <div class="column-left">
+            
+            <section id="jogar" class="game-zone">
+                <h2>🎮 MINIJOGO: Missão Carbono Zero</h2>
+                <p class="game-instruction">Você é o gestor de uma fazenda do futuro. Escolha as melhores práticas para aumentar sua produção sem agredir o meio ambiente e combater o desmatamento ilegal!</p>
+                
+                <div class="game-buttons">
+                    <button class="btn-action green" onclick="jogarTurno('ilpf')">
+                        <span>🌱</span> <strong>Tecnologia ILPF</strong> <small>(Integração Lavoura-Pecuária-Floresta)</small>
+                    </button>
+                    <button class="btn-action blue" onclick="jogarTurno('satelite')">
+                        <span>🛰️</span> <strong>Rastreamento via Satélite</strong> <small>(Combate ao Desmatamento Ilegal)</small>
+                    </button>
+                    <button class="btn-action gold" onclick="jogarTurno('codigo')">
+                        <span>📜</span> <strong>Aplicar Código Florestal</strong> <small>(Criação de APP e Reserva Legal)</small>
+                    </button>
+                </div>
 
-                <section class="card media-card">
-                    <h2>Treinamento Técnico (Vídeo Oficial)</h2>
+                <div id="game-console" class="console-output">
+                    > Console do Administrador Pronto. Aguardando comando...
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2>O Equilíbrio entre Produção e Conservação</h2>
+                <p>Muitas pessoas pensam que para o agro crescer é necessário desmatar. O objetivo do Agrinho 2026 é provar o contrário: <strong>o agro moderno usa a ciência para produzir mais no mesmo espaço.</strong></p>
+                
+                <div class="info-grid">
+                    <div class="info-pill">
+                        <h4>Por que combater o desmatamento?</h4>
+                        <p>A supressão ilegal da vegetação nativa destrói os microrganismos do solo, reduz a umidade do ar e desregula o ciclo de chuvas, prejudicando diretamente as plantações.</p>
+                    </div>
+                    <div class="info-pill">
+                        <h4>O papel das florestas no campo</h4>
+                        <p>Árvores mantêm as nascentes d'água protegidas e servem de abrigo para polinizadores naturais (como as abelhas), essenciais para mais de 70% das culturas agrícolas.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="column-right">
+            
+            <section class="media-section">
+                <h2>🎥 Central de Mídia</h2>
+                
+                <div class="video-card">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/P_Pq6VbS0_E" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">Assista como a tecnologia reduz o desmatamento recuperando áreas degradadas.</p>
-                </section>
+                    <p class="media-caption">Vídeo Oficial: Entenda como funciona a tecnologia de Integração Floresta-Lavoura-Pecuária.</p>
+                </div>
 
-                <section class="card">
-                    <h2>Base de Dados & Fontes Coletadas</h2>
-                    <p>Valide suas estratégias consultando dados científicos reais dos órgãos oficiais do setor:</p>
-                    <div class="sources-links">
-                        <a href="https://mapbiomas.org/" target="_blank">📊 MapBiomas (Dados de Cobertura Vegetal)</a>
-                        <a href="https://www.embrapa.br/" target="_blank">🔬 Embrapa (Pesquisa Agropecuária Sustentável)</a>
-                        <a href="https://www.gov.br/mma/" target="_blank">🏛️ Ministério do Meio Ambiente (Leis e Combate)</a>
-                        <a href="https://www.sistemafaep.org.br/" target="_blank">🌱 Sistema FAEP/SENAR-PR (Portal Agrinho)</a>
-                    </div>
-                </section>
-            </div>
+                <div class="image-card">
+                    <img src="https://www.embrapa.br/image/journal/article?img_id=82361685" alt="Monitoramento de Lavoura Sustentável">
+                    <p class="media-caption">Foto Técnica: Uso de sensores e imagens de satélite para rastrear a conservação e evitar o desmatamento ilegal. (Fonte: Embrapa)</p>
+                </div>
+            </section>
 
-        </main>
-    </div>
+            <section class="sources-section">
+                <h2>📚 Fontes Oficiais de Pesquisa</h2>
+                <p>Todo projeto de sucesso precisa ser baseado em fatos científicos e dados confiáveis:</p>
+                <div class="links-stack">
+                    <a href="https://www.sistemafaep.org.br/" target="_blank">🔗 Portal Agrinho / Sistema FAEP-PR</a>
+                    <a href="https://www.embrapa.br/" target="_blank">🔗 Embrapa (Tecnologias de Campo Sustentáveis)</a>
+                    <a href="https://mapbiomas.org/" target="_blank">🔗 MapBiomas (Monitoramento do Uso da Terra)</a>
+                    <a href="https://www.gov.br/mma/" target="_blank">🔗 Ministério do Meio Ambiente e Mudança do Clima</a>
+                </div>
+            </section>
+        </div>
+
+    </main>
 
     <footer>
-        <p>Projeto Desenvolvido para o Concurso Agrinho 2026 | Futuro Sustentável Gamificado</p>
+        <p>&copy; 2026 Concurso Agrinho • Desenvolvido por Equipe Futuro Sustentável</p>
     </footer>
 
     <script src="script.js"></script>
