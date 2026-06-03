@@ -1,299 +1,161 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Agro Forte</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurso Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
+    <style>
+        /* Estilização Geral (CSS) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9f4;
+            color: #333;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1b5e20;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 0.5rem;
+        }
+        .media-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        /* Responsividade para Imagens */
+        .media-container img {
+            max-width: 1000%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Responsividade para Vídeos (YouTube/Vimeo) */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            border: none;
+        }
+        .fontes-list {
+            list-style-type: square;
+            padding-left: 1.5rem;
+        }
+        .fontes-list a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .fontes-list a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #1b5e20;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- FUNDO -->
+    <header>
+        <h1>Concurso Agrinho 2026</h1>
+        <p>Tema: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente</p>
+    </header>
 
-  <div class="particles"></div>
+    <div class="container">
 
-  <!-- MENU -->
+        <section id="introducao">
+            <h2>Agro Forte e Futuro Sustentável</h2>
+            <p>O grande desafio do século XXI é garantir a segurança alimentar da população global enquanto protegemos os recursos naturais do nosso planeta. Um <strong>Agro Forte</strong> não caminha separado da preservação; pelo contrário, ele depende do equilíbrio ecológico, da saúde do solo e da regularidade das chuvas para prosperar.</p>
+            
+            <div class="media-container">
+                <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad49f?w=800" alt="Plantação sustentável com tecnologia de drones">
+                <p><em>Legenda: O uso da tecnologia no campo auxilia na precisão e na sustentabilidade da produção.</em></p>
+            </div>
+        </section>
 
-  <header>
+        <section id="meio-ambiente">
+            <h2>Meio Ambiente e o Combate ao Desmatamento</h2>
+            <p>A preservação das florestas nativas e da biodiversidade é peça-chave para mitigar as mudanças climáticas. No Brasil, o Código Florestal estabelece regras rígidas de preservação, como as Áreas de Preservação Permanente (APPs) e as Reservas Legais.</p>
+            <p>Práticas modernas como a <strong>ILPF (Integração Lavoura-Pecuária-Floresta)</strong> mostram que é possível intensificar a produção em áreas já abertas, recuperando pastagens degradadas e evitando a necessidade de novos desmatamentos.</p>
+            
+            <div class="media-container">
+                <h3>Vídeo Informativo: Tecnologias Sustentáveis no Campo</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
 
-    <h1>🌱 Agro Forte</h1>
-
-    <nav>
-
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sustentabilidade</a>
-      <a href="#tecnologia">Tecnologias</a>
-      <a href="#galeria">Galeria</a>
-      <a href="#videos">Vídeos</a>
-
-    </nav>
-
-  </header>
-
-  <!-- HERO -->
-
-  <section class="hero" id="inicio">
-
-    <div class="overlay"></div>
-
-    <div class="hero-content">
-
-      <h2>
-        Agro Forte,
-        Futuro Sustentável
-      </h2>
-
-      <p id="digitacao"></p>
-
-      <a href="#tecnologia" class="btn">
-        Explorar 🚀
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- SOBRE -->
-
-  <section class="sobre" id="sobre">
-
-    <h2>🌿 Agricultura Sustentável</h2>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <h3>💧 Economia de Água</h3>
-
-        <p>
-          Sensores inteligentes ajudam no uso consciente da água.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>☀️ Energia Limpa</h3>
-
-        <p>
-          Fazendas utilizam energia solar sustentável.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>🤖 Inteligência Artificial</h3>
-
-        <p>
-          IA melhora a produção agrícola.
-        </p>
-
-      </div>
+        <section id="fontes">
+            <h2>Fontes de Informação e Sites Oficiais</h2>
+            <p>Para o desenvolvimento deste projeto, foram utilizadas informações baseadas em dados científicos e diretrizes das principais instituições de pesquisa e educação do país:</p>
+            
+            <ul class="fontes-list">
+                <li>
+                    <strong>Sistema FAEP/SENAR-PR (Portal Agrinho):</strong> Espaço oficial do programa com regulamentos e materiais pedagógicos. <br>
+                    <a href="https://www.sistemafaep.org.br/" target="_blank">Visitar site do Sistema FAEP</a>
+                </li>
+                <li>
+                    <strong>Embrapa (Empresa Brasileira de Pesquisa Agropecuária):</strong> Referência global em tecnologias para a sustentabilidade do agro. <br>
+                    <a href="https://www.embrapa.br/" target="_blank">Visitar site da Embrapa</a>
+                </li>
+                <li>
+                    <strong>MapBiomas:</strong> Plataforma que monitora o uso da terra e as mudanças na cobertura vegetal do Brasil. <br>
+                    <a href="https://mapbiomas.org/" target="_blank">Visitar site do MapBiomas</a>
+                </li>
+                <li>
+                    <strong>Ministério do Meio Ambiente e Mudança do Clima:</strong> Dados governamentais sobre combate ao desmatamento e conservação. <br>
+                    <a href="https://www.gov.br/mma/" target="_blank">Visitar site do MMA</a>
+                </li>
+            </ul>
+        </section>
 
     </div>
 
-  </section>
-
-  <!-- TECNOLOGIAS -->
-
-  <section class="tecnologia" id="tecnologia">
-
-    <h2>🚀 Tecnologias do Futuro</h2>
-
-    <div class="tech-grid">
-
-      <div class="tech-card">
-
-        <img src="imagens/drone.jpg">
-
-        <h3>🚁 Drones Agrícolas</h3>
-
-        <p>
-          Monitoramento inteligente das plantações.
-        </p>
-
-      </div>
-
-      <div class="tech-card">
-
-        <img src="imagens/ia.jpg">
-
-        <h3>🤖 IA no Campo</h3>
-
-        <p>
-          Inteligência Artificial na agricultura moderna.
-        </p>
-
-      </div>
-
-      <div class="tech-card">
-
-        <img src="imagens/solar.jpg">
-
-        <h3>☀️ Energia Solar</h3>
-
-        <p>
-          Sustentabilidade e energia renovável.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTADOR -->
-
-  <section class="contador">
-
-    <h2 id="numero">0</h2>
-
-    <p>
-      Árvores preservadas 🌳
-    </p>
-
-  </section>
-
-  <!-- GRÁFICO -->
-
-  <section class="grafico">
-
-    <h2>📊 Economia de Água</h2>
-
-    <div class="grafico-container">
-
-      <div class="barra barra1">
-        <span>90%</span>
-      </div>
-
-      <div class="barra barra2">
-        <span>70%</span>
-      </div>
-
-      <div class="barra barra3">
-        <span>50%</span>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- MAPA -->
-
-  <section class="mapa">
-
-    <h2>🗺️ Brasil Agrícola</h2>
-
-    <img src="imagens/mapa-brasil.png" class="mapa-img">
-
-  </section>
-
-  <!-- GALERIA -->
-
-  <section class="galeria" id="galeria">
-
-    <h2>📸 Galeria</h2>
-
-    <div class="galeria-grid">
-
-      <img src="imagens/agro1.jpg">
-
-      <img src="imagens/agro2.jpg">
-
-      <img src="imagens/agro3.jpg">
-
-    </div>
-
-  </section>
-
-  <!-- VIDEOS -->
-
-  <section class="videos" id="videos">
-
-    <h2>🎥 Vídeos Modernos</h2>
-
-    <div class="video-grid">
-
-      <iframe
-        src="https://www.youtube.com/embed/f0HC1Udk6-E"
-        allowfullscreen>
-      </iframe>
-
-      <iframe
-        src="https://www.youtube.com/embed/8V2jB6N5S5Q"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-  </section>
-
-  <!-- ARTIGOS -->
-
-  <section class="artigos">
-
-    <h2>📚 Artigos Científicos</h2>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <h3>🌱 Agricultura Sustentável</h3>
-
-        <p>
-          Tecnologias modernas ajudam o meio ambiente.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>🤖 IA no Campo</h3>
-
-        <p>
-          A Inteligência Artificial melhora a produtividade.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>🚜 Agricultura 4.0</h3>
-
-        <p>
-          Automação transforma o agronegócio.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <p>
-      Concurso Agrinho 2026 🌎
-    </p>
-
-  </footer>
-
-  <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2026 - Projeto Desenvolvido para o Concurso Agrinho | Escola Conectada</p>
+    </footer>
 
 </body>
-
 </html>
+
