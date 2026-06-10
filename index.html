@@ -1,28 +1,152 @@
-<section id="videos" class="fade">
-  <h2>🎬 Vídeos Educativos</h2>
-  <p>Assista aos vídeos que mostram como o Agro Forte e Sustentável transforma a produção.</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agrinho 2026 - Agro Forte e Sustentável</title>
+  <style>
+    /* ===== Reset e corpo ===== */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+    body{background:#0d1117;color:white;line-height:1.5;scroll-behavior:smooth;}
+    a{text-decoration:none;color:#00ff88;}
+    a:hover{text-decoration:underline;}
 
-  <div class="video-container">
+    /* ===== Loader ===== */
+    #loader{position:fixed;width:100%;height:100%;background:#0d1117;display:flex;justify-content:center;align-items:center;z-index:9999;}
+    .spinner{width:60px;height:60px;border:6px solid #222;border-top:6px solid #00ff88;border-radius:50%;animation:spin 1s linear infinite;}
+    @keyframes spin{100%{transform:rotate(360deg);}}
 
-    <div class="video-item">
-      <iframe 
-        src="https://www.youtube.com/embed/Z6vYl7l8J4M" 
-        title="Agricultura Sustentável" 
-        loading="lazy" 
-        allowfullscreen>
-      </iframe>
-      <h3>Agricultura Sustentável</h3>
+    /* ===== Navbar ===== */
+    nav{position:sticky;top:0;background:#111827;display:flex;justify-content:center;gap:30px;padding:15px;z-index:100;}
+    nav a{color:white;}
+    nav a:hover{color:#00ff88;}
+
+    /* ===== Hero ===== */
+    .hero{height:100vh;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1950&q=80') center/cover;display:flex;justify-content:center;align-items:center;position:relative;}
+    .overlay{position:absolute;width:100%;height:100%;background:rgba(0,0,0,.65);}
+    .hero-content{position:relative;z-index:2;text-align:center;padding:20px;}
+    .hero-content h1{font-size:3rem;color:#00ff88;}
+    .hero-content p{margin:20px 0;font-size:1.2rem;}
+    .btn{padding:15px 30px;background:#00ff88;color:black;border-radius:40px;font-weight:bold;display:inline-block;}
+
+    /* ===== Seções ===== */
+    section{padding:80px 10%;}
+    .fade{opacity:0;transform:translateY(40px);transition:1s;}
+    .fade.show{opacity:1;transform:translateY(0);}
+
+    /* ===== Vídeos ===== */
+    #videos h2{text-align:center;margin-bottom:15px;color:#00ff88;}
+    .video-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;padding-top:20px;}
+    .video-item{background:#161b22;border-radius:15px;overflow:hidden;text-align:center;transition:.3s;}
+    .video-item iframe{width:100%;aspect-ratio:16/9;border:none;}
+    .video-item h3{padding:10px;color:white;font-size:1rem;background:#111827;}
+    .video-item:hover{transform:scale(1.03);box-shadow:0 0 20px #00ff88;}
+
+    /* ===== Quiz ===== */
+    .quiz{max-width:700px;margin:auto;background:#161b22;padding:30px;border-radius:15px;text-align:center;}
+    .progress-bar{background:#222;height:15px;border-radius:10px;margin-bottom:15px;overflow:hidden;}
+    #progress{height:100%;width:0%;background:#00ff88;transition:width .5s;}
+    .answer{display:block;width:100%;padding:15px;margin:10px 0;border:none;border-radius:10px;background:#222;color:white;cursor:pointer;transition:.3s;}
+    .answer:hover{background:#2a2a2a;}
+    .answer.correct{background:#00ff88;color:#000;}
+    .answer.wrong{background:#ff4444;}
+    .answer:disabled{cursor:not-allowed;}
+    #next{padding:12px 25px;border:none;margin-top:15px;background:#00ff88;font-weight:bold;cursor:pointer;border-radius:10px;}
+    #result{margin-top:15px;font-size:1.2rem;color:#00ff88;}
+
+    /* ===== Fontes ===== */
+    #fontes h2{text-align:center;color:#00ff88;margin-bottom:15px;}
+    #fontes ul{list-style:none;text-align:center;padding:0;}
+    #fontes ul li{margin:10px 0;}
+    footer{background:#111827;padding:25px;text-align:center;color:white;font-weight:bold;}
+
+    /* ===== Responsivo ===== */
+    @media(max-width:768px){
+      .hero-content h1{font-size:2.4rem;}
+      .video-container{grid-template-columns:1fr;}
+      .video-container iframe{height:auto;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader"><div class="spinner"></div></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#videos">Vídeos</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#fontes">Fontes</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Agrinho 2026</h1>
+      <p>Agro Forte e Sustentável</p>
+      <a href="#videos" class="btn">Comece aqui</a>
     </div>
+  </section>
 
-    <div class="video-item">
-      <iframe 
-        src="https://www.youtube.com/embed/fcZXfoB2f70" 
-        title="Tecnologias no Campo" 
-        loading="lazy" 
-        allowfullscreen>
-      </iframe>
-      <h3>Tecnologias no Campo</h3>
+  <!-- Vídeos -->
+  <section id="videos" class="fade">
+    <h2>🎬 Vídeos Educativos</h2>
+    <p>Assista aos vídeos que mostram como o Agro Forte e Sustentável transforma a produção.</p>
+    <div class="video-container">
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/Z6vYl7l8J4M" title="Agricultura Sustentável" loading="lazy" allowfullscreen></iframe>
+        <h3>Agricultura Sustentável</h3>
+      </div>
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/fcZXfoB2f70" title="Tecnologias no Campo" loading="lazy" allowfullscreen></iframe>
+        <h3>Tecnologias no Campo</h3>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Quiz -->
+  <section id="quiz" class="fade">
+    <h2>🧠 Quiz do Agro</h2>
+    <p>Teste seus conhecimentos sobre práticas sustentáveis no campo!</p>
+    <div class="quiz">
+      <div class="progress-bar"><div id="progress"></div></div>
+      <h3 id="question"></h3>
+      <div id="answers"></div>
+      <button id="next">Próxima Pergunta</button>
+      <div id="result"></div>
+    </div>
+  </section>
+
+  <!-- Fontes -->
+  <section id="fontes" class="fade">
+    <h2>📚 Fontes de Pesquisa</h2>
+    <ul>
+      <li><a href="https://www.embrapa.br/" target="_blank">EMBRAPA</a></li>
+      <li><a href="https://www.fao.org/home/pt/" target="_blank">FAO</a></li>
+      <li><a href="https://www.ibge.gov.br/" target="_blank">IBGE</a></li>
+      <li><a href="https://www.gov.br/agricultura/pt-br" target="_blank">Ministério da Agricultura</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <h3>Agrinho 2026</h3>
+    <p>🌱 Agro Forte e Sustentável</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Loader
+    window.addEventListener("load", ()=>{document.getElementById("loader").style.display="none";});
+
+    // Fade efeito
+    const observerFade = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add("show");});
+    });
+    document.querySelectorAll(".fade").forEach(el=>observerFade.observe(el));
+
+    // Quiz
+    const perguntas = [
+      {pergunta:"O que ajuda a preservar o solo?", opcoes:["Queimada","Rotação de culturas","Desmatamento","Poluição"], correta:1},
+      {pergunta:"Qual energia é renovável?", opcoes:["Petróleo","Diesel","Solar","Carvão"], correta:2},
+      {pergunta:"O que é agricultura sustentável?", opcoes:["Produzir sem limites","Produ
