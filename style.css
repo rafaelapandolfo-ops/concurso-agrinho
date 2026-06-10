@@ -1,4 +1,4 @@
-/* Variáveis globais para Dark Mode */
+/* Variáveis globais para Modo Claro */
 :root {
     --bg-primary: #f4f7f6;
     --bg-card: #ffffff;
@@ -11,7 +11,8 @@
     --amb-color: #2ecc71;
 }
 
-[data-theme="dark"] {
+/* Modificadores aplicados no Body pelo JavaScript para o Modo Escuro */
+body.dark-theme {
     --bg-primary: #121212;
     --bg-card: #1e1e1e;
     --text-main: #ffffff;
@@ -36,13 +37,14 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header e Nav */
+/* Header e Navegação */
 .main-header {
     background-color: var(--bg-card);
     border-bottom: 2px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 .header-container {
@@ -58,6 +60,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: var(--accent-color);
+    transition: background-color 0.3s ease;
 }
 
 .main-nav a {
@@ -72,7 +75,7 @@ body {
     background-color: var(--accent-hover);
 }
 
-/* Layout Estrutural */
+/* Layout Geral */
 .main-content {
     max-width: 1200px;
     margin: 30px auto;
@@ -95,13 +98,14 @@ h2 {
     gap: 20px;
 }
 
-/* Elementos de Interface */
+/* Cards de Informações */
 .card, .news-card, .tip-card, .simulator-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 24px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .news-card h3, .tip-card h3 {
@@ -122,15 +126,16 @@ h2 {
     border-radius: 4px;
     background-color: var(--bg-primary);
     color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Componentes de Botão */
+/* Elementos de Controle (Botões) */
 button {
     cursor: pointer;
     font-weight: bold;
     border: none;
     border-radius: 4px;
-    transition: background-color 0.2s, filter 0.2s;
+    transition: background-color 0.2s, filter 0.2s, color 0.3s ease;
 }
 
 button:hover {
@@ -151,13 +156,13 @@ button:hover {
 }
 
 .btn-accessible {
-    background-color: var(--bg-primary);
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
     padding: 8px 16px;
 }
 
-/* Barras do Simulador */
+/* Elementos Visuais do Jogo */
 .game-instructions {
     margin-bottom: 15px;
     color: var(--text-muted);
@@ -197,7 +202,7 @@ button:hover {
 }
 
 .btn-game {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-card);
     color: var(--text-main);
     border: 2px solid var(--accent-color);
     padding: 12px;
@@ -221,9 +226,10 @@ button:hover {
     margin-top: 40px;
     font-size: 0.9rem;
     color: var(--text-muted);
+    transition: background-color 0.3s ease;
 }
 
-/* 📱 Media Queries obrigatórias para Responsividade (Nível 4) */
+/* 📱 Responsividade - CSS Media Queries para Tablet e Desktop */
 @media (min-width: 768px) {
     .grid-container {
         display: grid;
