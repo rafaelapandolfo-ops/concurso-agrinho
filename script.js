@@ -1,7 +1,7 @@
 // Aguarda o carregamento total do DOM
 document.addEventListener("DOMContentLoaded", function () {
     
-    // Configurações e estados mutáveis do simulador
+    // Configurações e estados do simulador
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle("dark-theme");
     });
 
-    // Evento de envio e validação do formulário
+    // Evento de envio do formulário de boas-vindas
     formUsuario.addEventListener("submit", function (evento) {
         evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
@@ -44,7 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Função interna para atualizar as barras de preenchimento e valores numéricos
+    // Sistema de Caixas Expansíveis (Accordion)
+    const titulosAccordion = document.querySelectorAll(".accordion-header");
+    titulosAccordion.forEach(function (titulo) {
+        titulo.addEventListener("click", function () {
+            this.classList.toggle("active");
+        });
+    });
+
+    // Função interna para atualizar barras de preenchimento e valores na tela
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -54,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         txtScore.textContent = pontos;
 
-        // Monitoramento estruturado de falhas críticas ou vitória
+        // Monitoramento de falhas críticas ou colapso
         if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
             jogoAtivo = false;
             btnIntensificar.disabled = true;
@@ -70,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Soma pontuações caso a diferença proporcional seja mínima
+    // Soma pontuações caso a diferença de proporção seja mínima
     function somarPontos() {
         if (!jogoAtivo) return;
         const diferenca = Math.abs(producao - ambiente);
@@ -106,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Limpa os dados de rodadas antigas e reinicia o motor de estados
+    // Limpa os dados de rodadas antigas e reinicia a simulação
     btnResetGame.addEventListener("click", function () {
         producao = 50;
         ambiente = 50;
@@ -121,6 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Inicialização da janela ativa
+    // Inicialização visual da interface
     atualizarInterfaceJogo();
 });
