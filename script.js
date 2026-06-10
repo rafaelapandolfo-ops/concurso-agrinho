@@ -1,14 +1,14 @@
-// Garante o carregamento do DOM antes da execução
+// Aguarda o DOM carregar para iniciar a lógica
 document.addEventListener("DOMContentLoaded", function () {
     
-    // Variáveis de Controle do Estado do Jogo
+    // Variáveis globais para gerenciar o estado interno
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
     let pontos = 0;
     let jogoAtivo = true;
 
-    // Elementos da Interface capturados para manipulação do DOM
+    // Captura ordenada dos elementos do DOM
     const btnDarkMode = document.getElementById("toggle-dark-mode");
     const formUsuario = document.getElementById("form-usuario");
     const inputNome = document.getElementById("input-nome");
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtScore = document.getElementById("score-pontos");
     const msgStatus = document.getElementById("mensagem-status");
 
-    // // Função para gerenciar recurso extra (Modo Escuro) via JS
+    // Alternador de Modo Claro/Escuro por manipulação de atributo
     btnDarkMode.addEventListener("click", function () {
         const temaAtual = document.documentElement.getAttribute("data-theme");
         if (temaAtual === "dark") {
@@ -37,19 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // // Função para capturar dados do formulário e exibir saudação personalizada
+    // Processamento do formulário de boas-vindas
     formUsuario.addEventListener("submit", function (evento) {
         evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
         
         if (nomeUsuario !== "") {
-            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Ajude-nos a encontrar o equilíbrio perfeito nesta simulação.`;
+            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Busque o equilíbrio perfeito para salvar a simulação.`;
             textoBoasVindas.classList.remove("hidden");
             formUsuario.classList.add("hidden");
         }
     });
 
-    // // Função para atualizar os elementos visuais e as barras do jogo no DOM
+    // Função interna para renderizar o estado do jogo nas barras e textos
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         txtScore.textContent = pontos;
 
-        // Validação das condições de fim de jogo ou estabilidade
+        // Validação de colapso do sistema (Cenário de derrota/fim)
         if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
             jogoAtivo = false;
             btnIntensificar.disabled = true;
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             btnSustentavel.disabled = true;
             btnResetGame.classList.remove("hidden");
             
-            msgStatus.textContent = "Fim de jogo! O ecossistema colapsou devido ao desequilíbrio.";
+            msgStatus.textContent = "Fim de jogo! O ecossistema colapsou pelo desequilíbrio estrutural.";
             msgStatus.className = "status-danger";
         } else {
             msgStatus.textContent = "Ecossistema Saudável e Estável.";
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // // Função para calcular os pontos de bônus por rodada equilibrada
+    // Calcula bonificação incremental baseada no nível de igualdade dos fatores
     function somarPontos() {
         if (!jogoAtivo) return;
         const diferenca = Math.abs(producao - ambiente);
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Eventos de clique dos botões do simulador
+    // Ouvintes de ação para cliques nos controles do jogo
     btnIntensificar.addEventListener("click", function () {
         if (!jogoAtivo) return;
         producao += 10;
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // // Função para resetar as variáveis e a tela do jogo
+    // Reseta o estado inicial do motor do jogo
     btnResetGame.addEventListener("click", function () {
         producao = 50;
         ambiente = 50;
@@ -126,6 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Inicialização da interface
+    // Inicialização da interface na primeira execução
     atualizarInterfaceJogo();
 });
