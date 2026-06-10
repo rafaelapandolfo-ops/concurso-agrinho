@@ -1,225 +1,142 @@
-// ==========================================
-// 1. LÓGICA DO SIMULADOR AGROAMBIENTAL
-// ==========================================
-
-// Estado inicial do simulador
-const estadoSimulador = {
-    ilpf: { ativo: false, arvores: 450, co2: 12.5, prod: 20 },
-    biologicos: { ativo: false, arvores: 0, co2: 4.2, prod: 15 },
-    satelite: { ativo: false, arvores: 1200, co2: 35.0, prod: -5 } // Foco total em proteção ambiental
-};
-
-function ativarTecnologia(idTecnologia) {
-    const tecnologia = estadoSimulador[idTecnologia];
-    const botao = document.querySelector(`button[onclick="ativarTecnologia('${idTecnologia}')"]`);
-    const logSistema = document.getElementById('log-sistema');
-
-    if (!tecnologia) return;
-
-    // Alterna o estado ativo/inativo
-    tecnologia.ativo = !tecnologia.ativo;
-
-    // Atualiza a interface do botão (efeito visual de selecionado)
-    if (tecnologia.ativo) {
-        botao.classList.add('active'); // Você pode estilizar a classe .active no seu CSS
-        botao.style.border = "2px solid #2ecc71";
-        botao.style.backgroundColor = "rgba(46, 204, 113, 0.1)";
-        adicionarLog(`[Sucesso]: Diretriz '${idTecnologia.toUpperCase()}' ativada com sucesso.`);
-    } else {
-        botao.classList.remove('active');
-        botao.style.border = "";
-        botao.style.backgroundColor = "";
-        adicionarLog(`[Aviso]: Diretriz '${idTecnologia.toUpperCase()}' desativada.`);
-    }
-
-    // Recalcula as métricas globais
-    atualizarMetricas();
-}
-
-function adicionarLog(mensagem) {
-    const logSistema = document.getElementById('log-sistema');
-    const timestamp = new Date().toLocaleTimeString();
-    logSistema.innerHTML = `[${timestamp}] ${mensagem}`;
-}
-
-function atualizarMetricas() {
-    let totalArvores = 0;
-    let totalCO2 = 0.0;
-    let totalProd = 100; // Produtividade base de 100%
-
-    // Soma os impactos de cada tecnologia ativa
-    for (const chave in estadoSimulador) {
-        if (estadoSimulador[chave].ativo) {
-            totalArvores += estadoSimulador[chave].arvores;
-            totalCO2 += estadoSimulador[chave].co2;
-            totalProd += estadoSimulador[chave].prod;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte e Sustentável - Concurso Agrinho 2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f9f4;
+            color: #333;
         }
-    }
-
-    // Atualiza os elementos na tela
-    document.getElementById('m-arvores').innerText = totalArvores.toLocaleString('pt-BR');
-    document.getElementById('m-co2').innerText = `${totalCO2.toFixed(1)} t`;
-    document.getElementById('m-prod').innerText = `${totalProd}%`;
-}
-
-
-// ==========================================
-// 2. LÓGICA DO QUIZ AGROSUSTENTÁVEL
-// ==========================================
-
-// Banco de perguntas focado no tema e nas fontes descritas no HTML
-const bancoPerguntas = [
-    {
-        pergunta: "De acordo com o Código Florestal brasileiro, quais áreas são destinadas a salvaguardar os recursos hídricos e a estabilidade geológica?",
-        respostas: [
-            { texto: "Reserva Legal e Áreas Urbanas", correta: false },
-            { texto: "Áreas de Preservação Permanente (APPs) e Reserva Legal", correta: true },
-            { texto: "Zonas de Amortecimento Industriais", correta: false },
-            { texto: "Apenas propriedades latifundiárias de monocultura", correta: false }
-        ]
-    },
-    {
-        pergunta: "Qual é a principal vantagem ambiental da tecnologia ILPF (Integração Lavoura-Pecuária-Floresta) promovida pela Embrapa?",
-        respostas: [
-            { texto: "Maximizar o desmatamento para a entrada de maquinário pesado", correta: false },
-            { texto: "Otimizar o espaço e promover a fixação biológica de carbono, mitigando gases estufa", correta: true },
-            { texto: "Substituir completamente a produção vegetal por criação de gado de corte", correta: false },
-            { texto: "Eliminar a necessidade de rotação de culturas na propriedade", correta: false }
-        ]
-    },
-    {
-        pergunta: "Como a Intensificação Tecnológica (ex: plantio direto na palha) ajuda a evitar a expansão do desmatamento?",
-        respostas: [
-            { texto: "Ela força o agricultor a buscar novas terras a cada safra", correta: false },
-            { texto: "Ela permite obter mais safras no mesmo espaço, poupando a abertura de florestas nativas", correta: true },
-            { texto: "Ela reduz a produtividade, tornando a terra inutilizável", correta: false },
-            { texto: "Ela exige a compactação severa do solo para funcionar", correta: false }
-        ]
-    },
-    {
-        pergunta: "Qual ferramenta geoespacial listada nas fontes oficiais ajuda a monitorar em tempo real dados de desmatamento e uso do solo no Brasil?",
-        respostas: [
-            { texto: "MapBiomas", correta: true },
-            { texto: "Google Tradutor", correta: false },
-            { texto: "Fórum Econômico Mundial", correta: false },
-            { texto: "Censo Demográfico do IBGE", correta: false }
-        ]
-    }
-];
-
-let indicePerguntaAtual = 0;
-let pontuacao = 0;
-
-// Elementos do DOM do Quiz
-const questionContainer = document.getElementById('question-container');
-const questionTextElement = document.getElementById('question-text');
-const answerButtonsElement = document.getElementById('answer-buttons');
-const quizControls = document.getElementById('quiz-controls');
-const scoreContainer = document.getElementById('score-container');
-const scoreTextElement = document.getElementById('score-text');
-
-// Inicializa o quiz quando a página carregar
-window.addEventListener('DOMContentLoaded', () => {
-    iniciarQuiz();
-});
-
-function iniciarQuiz() {
-    indicePerguntaAtual = 0;
-    pontuacao = 0;
-    scoreContainer.classList.add('hide');
-    scoreContainer.style.display = 'none';
-    questionContainer.classList.remove('hide');
-    questionContainer.style.display = 'block';
-    definirProximaPergunta();
-}
-
-function definirProximaPergunta() {
-    resetarEstadoQuiz();
-    mostrarPergunta(bancoPerguntas[indicePerguntaAtual]);
-}
-
-function mostrarPergunta(perguntaObjeto) {
-    questionTextElement.innerText = perguntaObjeto.pergunta;
-    
-    perguntaObjeto.respostas.forEach(resposta => {
-        const botao = document.createElement('button');
-        botao.innerText = resposta.texto;
-        botao.classList.add('btn-quiz-opt'); // Adicione estilo para os botões de opção no CSS
-        
-        // Estilos básicos padrão para os botões do quiz
-        botao.style.padding = "12px";
-        botao.style.margin = "5px 0";
-        botao.style.border = "1px solid #ccc";
-        botao.style.borderRadius = "6px";
-        botao.style.cursor = "pointer";
-        botao.style.textAlign = "left";
-        botao.style.backgroundColor = "#fff";
-        botao.style.transition = "all 0.2s ease";
-
-        if (resposta.correta) {
-            botao.dataset.correta = resposta.correta;
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
         }
-        botao.addEventListener('click', selecionarResposta);
-        answerButtonsElement.appendChild(botao);
-    });
-}
-
-function resetarEstadoQuiz() {
-    quizControls.classList.add('hide');
-    quizControls.style.display = 'none';
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-    }
-}
-
-function selecionarResposta(e) {
-    const botaoSelecionado = e.target;
-    const ehCorreto = botaoSelecionado.dataset.correta === "true";
-    
-    if (ehCorreto) {
-        pontuacao++;
-        botaoSelecionado.style.backgroundColor = "#2ecc71"; // Verde para correto
-        botaoSelecionado.style.color = "#fff";
-    } else {
-        botaoSelecionado.style.backgroundColor = "#e74c3c"; // Vermelho para errado
-        botaoSelecionado.style.color = "#fff";
-    }
-
-    // Revela a resposta correta para o usuário e desativa cliques adicionais
-    Array.from(answerButtonsElement.children).forEach(botao => {
-        if (botao.dataset.correta === "true") {
-            botao.style.backgroundColor = "#2ecc71";
-            botao.style.color = "#fff";
+        nav {
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
         }
-        botao.disabled = true;
-    });
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            color: #2E7D32;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .quiz-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .sources {
+            font-size: 0.9em;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
 
-    // Gerencia o fluxo das perguntas
-    if (bancoPerguntas.length > indicePerguntaAtual + 1) {
-        quizControls.classList.remove('hide');
-        quizControls.style.display = 'block';
-    } else {
-        // Fim do quiz após um breve delay para visualização do resultado
-        setTimeout(mostrarResultadoFinal, 1500);
-    }
-}
+<header>
+    <h1>Agro Forte e Sustentável</h1>
+    <p>Concurso Agrinho 2026</p>
+</header>
 
-function proximaPergunta() {
-    indicePerguntaAtual++;
-    definirProximaPergunta();
-}
+<nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#referencias">Referências</a>
+</nav>
 
-function mostrarResultadoFinal() {
-    questionContainer.classList.add('hide');
-    questionContainer.style.display = 'none';
-    quizControls.classList.add('hide');
-    quizControls.style.display = 'none';
-    
-    scoreContainer.classList.remove('hide');
-    scoreContainer.style.display = 'block';
-    scoreTextElement.innerText = `Você acertou ${pontuacao} de ${bancoPerguntas.length} perguntas.`;
-}
+<section id="sobre">
+    <h2>Sobre o Tema</h2>
+    <p>O conceito de Agro Forte e Sustentável busca conciliar a produtividade agrícola com a preservação do meio ambiente, incentivando práticas que garantam alimentos de qualidade, valorização do agricultor e cuidado com os recursos naturais.</p>
+    <p>Práticas como rotação de culturas, agricultura de baixo impacto, uso racional da água e energia renovável são essenciais para um futuro sustentável.</p>
+</section>
 
-function reiniciarQuiz() {
-    iniciarQuiz();
-}
+<section id="videos">
+    <h2>Vídeos Educativos</h2>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/2xK3t0eV0OA" title="Agro Sustentável" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/KlVnWmHZUVo" title="Tecnologias no Agro" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="fotos">
+    <h2>Fotos</h2>
+    <img src="https://www.embrapa.br/busca-de-imagens/-/imagem/1011232/fazenda-sustentavel" alt="Fazenda Sustentável">
+    <img src="https://www.fao.org/fileadmin/templates/faoitaly/documents/news_images/2019/agriculture_sustainable.jpg" alt="Práticas Sustentáveis">
+</section>
+
+<section id="quiz">
+    <h2>Teste seus conhecimentos</h2>
+    <p>Responda ao quiz sobre práticas agrícolas sustentáveis:</p>
+    <div class="quiz-container">
+        <iframe src="https://quizizz.com/admin/quiz/EXEMPLO_DE_QUIZ" width="800" height="600" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="referencias">
+    <h2>Referências</h2>
+    <div class="sources">
+        <ul>
+            <li>EMBRAPA – <a href="https://www.embrapa.br" target="_blank">https://www.embrapa.br</a></li>
+            <li>FAO – Agricultura Sustentável – <a href="https://www.fao.org/sustainability/en/" target="_blank">https://www.fao.org/sustainability/en/</a></li>
+            <li>Ministério da Agricultura – <a href="https://www.gov.br/agricultura/pt-br" target="_blank">https://www.gov.br/agricultura/pt-br</a></li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <p>Desenvolvido para o Concurso Agrinho 2026 | Tema: Agro Forte e Sustentável</p>
+</footer>
+
+</body>
+</html>
