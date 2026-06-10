@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte, Futuro Sustentável - Concurso Agrinho 2026</title>
+    <title>Portal Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Cabeçalho principal com título e acessibilidade -->
     <header class="main-header">
         <div class="header-container">
             <h1>Agro Sustentável</h1>
-            <button id="toggle-dark-mode" class="btn-accessible" aria-label="Alternar modo escuro">Alternar Modo</button>
+            <button id="toggle-dark-mode" class="btn-accessible">Alternar Modo</button>
         </div>
         <nav class="main-nav">
             <a href="#noticias">Novidades</a>
-            <a href="#dicas">Dicas Agronômicas</a>
-            <a href="#jogo-simulador">Simulador Ecológico</a>
+            <a href="#dicas">Dicas</a>
+            <a href="#jogo-simulador">Jogo Simulador</a>
         </nav>
     </header>
 
     <main class="main-content">
-        <!-- Seção de Boas-vindas Personalizada -->
+        <!-- Formulário para identificação e saudação via JavaScript -->
         <section class="welcome-section">
             <div class="card">
-                <h2>Identificação do Usuário</h2>
+                <h2>Acesso ao Portal</h2>
                 <form id="form-usuario" class="user-form">
                     <label for="input-nome">Digite seu nome para iniciar:</label>
                     <input type="text" id="input-nome" required placeholder="Ex: João Silva">
@@ -33,22 +34,22 @@
             </div>
         </section>
 
-        <!-- Seção de Notícias e Novidades -->
+        <!-- Seção de artigos e novidades sobre o tema -->
         <section id="noticias" class="articles-section">
-            <h2>Novidades do Agronegócio Sustentável</h2>
+            <h2>Novidades do Agro Sustentável</h2>
             <div class="grid-container">
                 <article class="news-card">
-                    <h3>Tecnologia de Precisão Reduz Desperdício</h3>
+                    <h3>Tecnologia de Precisão no Paraná</h3>
                     <p>O uso de drones e sensores inteligentes nas lavouras do Paraná está permitindo a aplicação localizada de insumos, reduzindo o impacto ambiental em até 40% e preservando os polinizadores locais.</p>
                 </article>
                 <article class="news-card">
-                    <h3>Crédito Verde Impulsiona Produtores</h3>
+                    <h3>Crédito Verde para Produtores</h3>
                     <p>Novas linhas de financiamento premiam fazendas que mantêm áreas de preservação permanente acima do teto legal. O equilíbrio financeiro encontra a conservação florestal.</p>
                 </article>
             </div>
         </section>
 
-        <!-- Seção de Dicas -->
+        <!-- Seção de dicas agronômicas sustentáveis -->
         <section id="dicas" class="tips-section">
             <h2>Dicas para o Equilíbrio Ecológico</h2>
             <div class="grid-container">
@@ -57,13 +58,13 @@
                     <p>Alternar espécies de plantas na mesma área melhora a biologia do solo e quebra o ciclo de pragas sem necessidade de defensivos químicos agressivos.</p>
                 </div>
                 <div class="tip-card">
-                    <h3>Plantio Direto</h3>
+                    <h3>Sistema de Plantio Direto</h3>
                     <p>Manter a palhada sobre a terra protege o solo contra a erosão da chuva, retém umidade e sequestra o carbono da atmosfera de forma eficiente.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Seção do Jogo/Simulador -->
+        <!-- Jogo interativo exigido voltado ao tema -->
         <section id="jogo-simulador" class="game-section">
             <h2>Simulador: Equilíbrio entre Produção e Meio Ambiente</h2>
             <p class="game-instructions">Instruções: Use os botões para balancear os níveis. Se a Produção ou o Meio Ambiente chegarem a zero, o ecossistema colapsa!</p>
@@ -100,9 +101,9 @@
         </section>
     </main>
 
+    <!-- Rodapé semântico -->
     <footer class="main-footer">
         <p>&copy; 2026 Concurso Agrinho. Tema: "Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente".</p>
-        <p>Desenvolvido com fins estritamente educacionais e em conformidade com as diretrizes da categoria de programação.</p>
     </footer>
 
     <script src="script.js"></script>
