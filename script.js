@@ -1,16 +1,14 @@
-// Aguarda o DOM carregar completamente antes de rodar os scripts
+// Garante o carregamento do DOM antes da execução
 document.addEventListener("DOMContentLoaded", function () {
     
-    // ==========================================
-    // 1. VARIÁVEIS E GERENCIAMENTO DE ESTADO
-    // ==========================================
+    // Variáveis de Controle do Estado do Jogo
     let nomeUsuario = "";
-    let nívelProducao = 50;
-    let nívelAmbiente = 50;
-    let pontosEquilibrio = 0;
+    let producao = 50;
+    let ambiente = 50;
+    let pontos = 0;
     let jogoAtivo = true;
 
-    // Elementos da Interface (Manipulação do DOM)
+    // Elementos da Interface capturados para manipulação do DOM
     const btnDarkMode = document.getElementById("toggle-dark-mode");
     const formUsuario = document.getElementById("form-usuario");
     const inputNome = document.getElementById("input-nome");
@@ -29,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtScore = document.getElementById("score-pontos");
     const msgStatus = document.getElementById("mensagem-status");
 
-    // ==========================================
-    // 2. ACESSIBILIDADE E RECURSO EXTRA: MODO ESCURO
-    // ==========================================
+    // // Função para gerenciar recurso extra (Modo Escuro) via JS
     btnDarkMode.addEventListener("click", function () {
         const temaAtual = document.documentElement.getAttribute("data-theme");
         if (temaAtual === "dark") {
@@ -41,101 +37,85 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ==========================================
-    // 3. CAPTURA DE EVENTO E PROCESSAMENTO DE INPUT
-    // ==========================================
+    // // Função para capturar dados do formulário e exibir saudação personalizada
     formUsuario.addEventListener("submit", function (evento) {
-        evento.preventDefault(); // Impede o recarregamento padrão da página
-        
+        evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
         
         if (nomeUsuario !== "") {
-            // Modifica o DOM injetando string personalizada estruturada
-            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Bem-vindo ao simulador do Agrinho 2026. Almeje o equilíbrio máximo!`;
+            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Ajude-nos a encontrar o equilíbrio perfeito nesta simulação.`;
             textoBoasVindas.classList.remove("hidden");
             formUsuario.classList.add("hidden");
         }
     });
 
-    // ==========================================
-    // 4. LÓGICA DO SIMULADOR (JOGO INTERATIVO)
-    // ==========================================
+    // // Função para atualizar os elementos visuais e as barras do jogo no DOM
     function atualizarInterfaceJogo() {
-        // Atualiza textos numéricos
-        txtProducao.textContent = nívelProducao;
-        txtAmbiente.textContent = nívelAmbiente;
+        txtProducao.textContent = producao;
+        txtAmbiente.textContent = ambiente;
         
-        // Altera propriedades de estilo das barras dinamicamente
-        barraProducao.style.width = nívelProducao + "%";
-        barraAmbiente.style.width = nívelAmbiente + "%";
+        barraProducao.style.width = producao + "%";
+        barraAmbiente.style.width = ambiente + "%";
         
-        // Atualiza pontuação
-        txtScore.textContent = pontosEquilibrio;
+        txtScore.textContent = pontos;
 
-        // Verifica regras de colapso ou vitória
-        if (nívelProducao <= 0 || nívelAmbiente <= 0 || nívelProducao >= 100 || nívelAmbiente >= 100) {
-            finalizarJogo(false);
-        } else if (nívelProducao >= 70 && nívelAmbiente >= 70) {
-            msgStatus.textContent = "Excelente! Alta produtividade com sustentabilidade real!";
-            msgStatus.className = "status-ok";
+        // Validação das condições de fim de jogo ou estabilidade
+        if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
+            jogoAtivo = false;
+            btnIntensificar.disabled = true;
+            btnReflorestar.disabled = true;
+            btnSustentavel.disabled = true;
+            btnResetGame.classList.remove("hidden");
+            
+            msgStatus.textContent = "Fim de jogo! O ecossistema colapsou devido ao desequilíbrio.";
+            msgStatus.className = "status-danger";
         } else {
-            msgStatus.textContent = "Ecossistema Estável. Busque elevar ambos com responsabilidade.";
+            msgStatus.textContent = "Ecossistema Saudável e Estável.";
             msgStatus.className = "status-ok";
         }
     }
 
-    function calcularPontos() {
+    // // Função para calcular os pontos de bônus por rodada equilibrada
+    function somarPontos() {
         if (!jogoAtivo) return;
-        // Premia o usuário baseado na proximidade da igualdade ideal (50/50 ou superior)
-        const diferenca = Math.abs(nívelProducao - nívelAmbiente);
-        if (diferenca <= 10) {
-            pontosEquilibrio += 20;
+        const diferenca = Math.abs(producao - ambiente);
+        if (diferenca <= 15) {
+            pontos += 10;
         } else {
-            pontosEquilibrio += 5;
+            pontos += 2;
         }
     }
 
-    function finalizarJogo(vitoria) {
-        jogoAtivo = false;
-        btnIntensificar.disabled = true;
-        btnReflorestar.disabled = true;
-        btnSustentavel.disabled = true;
-        btnResetGame.classList.remove("hidden");
-        
-        msgStatus.textContent = "Fim da Simulação! O Ecossistema quebrou devido ao descompasso operacional.";
-        msgStatus.className = "status-danger";
-    }
-
-    // Ouvintes de eventos para as interações do usuário no jogo
+    // Eventos de clique dos botões do simulador
     btnIntensificar.addEventListener("click", function () {
         if (!jogoAtivo) return;
-        nívelProducao += 15;
-        nívelAmbiente -= 10;
-        calcularPontos();
+        producao += 10;
+        ambiente -= 10;
+        somarPontos();
         atualizarInterfaceJogo();
     });
 
     btnReflorestar.addEventListener("click", function () {
         if (!jogoAtivo) return;
-        nívelProducao -= 10;
-        nívelAmbiente += 15;
-        calcularPontos();
+        producao -= 10;
+        ambiente += 10;
+        somarPontos();
         atualizarInterfaceJogo();
     });
 
     btnSustentavel.addEventListener("click", function () {
         if (!jogoAtivo) return;
-        // A tecnologia sustentável equilibra os fatores aumentando ambos de forma ponderada
-        nívelProducao += 5;
-        nívelAmbiente += 5;
-        calcularPontos();
+        producao += 5;
+        ambiente += 5;
+        somarPontos();
         atualizarInterfaceJogo();
     });
 
+    // // Função para resetar as variáveis e a tela do jogo
     btnResetGame.addEventListener("click", function () {
-        nívelProducao = 50;
-        nívelAmbiente = 50;
-        pontosEquilibrio = 0;
+        producao = 50;
+        ambiente = 50;
+        pontos = 0;
         jogoAtivo = true;
         
         btnIntensificar.disabled = false;
@@ -146,6 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Executa a montagem visual inicial do simulador
+    // Inicialização da interface
     atualizarInterfaceJogo();
 });
