@@ -79,14 +79,14 @@
             </div>
         </section>
 
-        <!-- NOVO: Seção de Monitoramento Agrometeorológico e Satélite (Mapa + Clima) -->
+        <!-- Seção de Monitoramento (Mapa + Clima) -->
         <section id="monitoramento" class="monitoring-section">
             <h2>Painel de Monitoramento do Campo</h2>
             <div class="grid-container">
                 <!-- Painel Climático Dinâmico -->
                 <div class="card weather-card">
                     <h3>Previsão do Tempo Agrícola</h3>
-                    <p class="game-instructions">Clique no botão para simular a mudança de estação nas lavouras:</p>
+                    <p class="game-instructions">Clique no botão para simular a mudança de condição climática:</p>
                     <div class="weather-info">
                         <div class="weather-main">
                             <span id="clima-icone" class="weather-icon">☀️</span>
@@ -101,24 +101,24 @@
                     <button id="btn-mudar-clima" class="btn-primary" style="margin-top: 15px; width: 100%;">Mudar Condição Climática</button>
                 </div>
 
-                <!-- Mapa Abstrato do Solo (Feito com Pure CSS Grid para simular satélite) -->
+                <!-- Mapa por Satélite (Garantindo todos os pixels no HTML) -->
                 <div class="card map-card">
                     <h3>Mapa de Cobertura Vegetal por Satélite</h3>
-                    <p class="game-instructions">Legenda: Escuro (Mata Preservada) | Verde (Lavoura Saudável) | Amarelo (Solo Exposto)</p>
+                    <p class="game-instructions">Legenda: Escuro (Mata) | Verde (Lavoura) | Amarelo (Solo Seco)</p>
                     <div class="satellite-map">
                         <div class="map-pixel forest"></div><div class="map-pixel forest"></div><div class="map-pixel crop"></div><div class="map-pixel crop"></div>
                         <div class="map-pixel forest"></div><div class="map-pixel crop"></div><div class="map-pixel crop"></div><div class="map-pixel dry"></div>
                         <div class="map-pixel crop"></div><div class="map-pixel crop"></div><div class="map-pixel dry"></div><div class="map-pixel dry"></div>
                         <div class="map-pixel forest"></div><div class="map-pixel forest"></div><div class="map-pixel crop"></div><div class="map-pixel crop"></div>
                     </div>
-                    <span class="credits">Mapa esquemático em tempo real simulado com CSS Grid nativo.</span>
+                    <span class="credits">Simulação esquemática nativa com CSS Grid e JS.</span>
                 </div>
             </div>
         </section>
 
         <!-- Jogo Simulador Interativo -->
         <section id="jogo-simulador" class="game-section">
-            <h2>Simulador: Equilíbrio entre Produção e Meio Ambiente</h2>
+            <h2>Simulador: Equilíbrio entre Production e Meio Ambiente</h2>
             <p class="game-instructions">Instruções: Use os botões para balancear os níveis. Se a Produção ou o Meio Ambiente chegarem a 0% ou 100%, o ecossistema colapsa!</p>
             
             <div class="simulator-card">
