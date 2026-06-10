@@ -11,7 +11,7 @@
     --amb-color: #2ecc71;
 }
 
-/* Modificadores aplicados no Body pelo JavaScript para o Modo Escuro */
+/* Alterações automáticas via JavaScript para Modo Escuro */
 body.dark-theme {
     --bg-primary: #121212;
     --bg-card: #1e1e1e;
@@ -98,7 +98,7 @@ h2 {
     gap: 20px;
 }
 
-/* Cards de Informações */
+/* Cards */
 .card, .news-card, .tip-card, .simulator-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -129,7 +129,7 @@ h2 {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Elementos de Controle (Botões) */
+/* Botões */
 button {
     cursor: pointer;
     font-weight: bold;
@@ -160,6 +160,38 @@ button:hover {
     color: #ffffff;
     border: none;
     padding: 8px 16px;
+}
+
+/* Sistema Accordion (Caixas de Explicação) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 0;
+    user-select: none;
+}
+
+.accordion-header span {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+    color: var(--accent-color);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    padding-top: 0;
+}
+
+.accordion-header.active span {
+    transform: rotate(45deg); /* Muda o símbolo de + para x */
+}
+
+.accordion-header.active + .accordion-content {
+    max-height: 200px;
+    padding-top: 10px;
 }
 
 /* Elementos Visuais do Jogo */
@@ -229,7 +261,7 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-/* 📱 Responsividade - CSS Media Queries para Tablet e Desktop */
+/* 📱 Media Queries obrigatórias para Responsividade (Nível 4) */
 @media (min-width: 768px) {
     .grid-container {
         display: grid;
