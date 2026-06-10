@@ -1,15 +1,14 @@
-// Aguarda o carregamento total do DOM
 document.addEventListener("DOMContentLoaded", function () {
-    
-    // Configurações e estados do simulador
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
     let pontos = 0;
     let jogoAtivo = true;
+    let tamanhoFonteAtual = 100; // Porcentagem do tamanho da fonte
 
-    // Elementos capturados na interface do usuário
     const btnDarkMode = document.getElementById("toggle-dark-mode");
+    const btnAumentarFonte = document.getElementById("btn-aumentar-fonte");
+    const btnDiminuirFonte = document.getElementById("btn-diminuir-fonte");
     const formUsuario = document.getElementById("form-usuario");
     const inputNome = document.getElementById("input-nome");
     const textoBoasVindas = document.getElementById("texto-boas-vindas");
@@ -27,12 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtScore = document.getElementById("score-pontos");
     const msgStatus = document.getElementById("mensagem-status");
 
-    // Gerenciador do recurso extra de Modo Escuro por troca de classes
+    // Controle de Modo Escuro
     btnDarkMode.addEventListener("click", function () {
         document.body.classList.toggle("dark-theme");
     });
 
-    // Evento de envio do formulário de boas-vindas
+    // Controle de Acessibilidade: Alteração de tamanho de fonte via JS (Exigência Rubrica)
+    btnAumentarFonte.addEventListener("click", function () {
+        if (tamanhoFonteAtual < 140) {
+            tamanhoFonteAtual += 10;
+            document.body.style.fontSize = tamanhoFonteAtual + "%";
+        }
+    });
+
+    btnDiminuirFonte.addEventListener("click", function () {
+        if (tamanhoFonteAtual > 80) {
+            tamanhoFonteAtual -= 10;
+            document.body.style.fontSize = tamanhoFonteAtual + "%";
+        }
+    });
+
     formUsuario.addEventListener("submit", function (evento) {
         evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
@@ -44,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Sistema de Caixas Expansíveis (Accordion)
+    // Accordion das Caixas de Explicação
     const titulosAccordion = document.querySelectorAll(".accordion-header");
     titulosAccordion.forEach(function (titulo) {
         titulo.addEventListener("click", function () {
@@ -52,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Função interna para atualizar barras de preenchimento e valores na tela
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -62,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
         txtScore.textContent = pontos;
 
-        // Monitoramento de falhas críticas ou colapso
         if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
             jogoAtivo = false;
             btnIntensificar.disabled = true;
@@ -78,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Soma pontuações caso a diferença de proporção seja mínima
     function somarPontos() {
         if (!jogoAtivo) return;
         const diferenca = Math.abs(producao - ambiente);
@@ -89,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Gatilhos de cliques interativos do simulador ambiental
     btnIntensificar.addEventListener("click", function () {
         if (!jogoAtivo) return;
         producao += 10;
@@ -114,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Limpa os dados de rodadas antigas e reinicia a simulação
     btnResetGame.addEventListener("click", function () {
         producao = 50;
         ambiente = 50;
@@ -129,6 +137,5 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Inicialização visual da interface
     atualizarInterfaceJogo();
 });
