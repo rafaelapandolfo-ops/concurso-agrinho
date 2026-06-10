@@ -33,7 +33,7 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-main);
     line-height: 1.6;
-    transition: background-color 0.3s settings, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Header e Navegação */
@@ -72,7 +72,7 @@ body {
     background-color: var(--accent-hover);
 }
 
-/* Conteúdo Principal e Layout Grid */
+/* Layout Geral */
 .main-content {
     max-width: 1200px;
     margin: 30px auto;
@@ -95,7 +95,7 @@ h2 {
     gap: 20px;
 }
 
-/* Cards e Componentes */
+/* Cards */
 .card, .news-card, .tip-card, .simulator-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -109,7 +109,7 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* Formulário Semântico */
+/* Formulários */
 .user-form {
     display: flex;
     flex-direction: column;
@@ -131,7 +131,7 @@ button {
     font-weight: bold;
     border: none;
     border-radius: 4px;
-    transition: filter 0.2s, background-color 0.2s;
+    transition: filter 0.2s;
 }
 
 button:hover {
@@ -211,22 +211,21 @@ button:hover {
 }
 
 .status-ok { color: #27ae60; }
-.status-danger { color: #c0392b; font-weight: bold; }
+.status-danger { color: #c0392b; }
 
-/* Classes de Estado e Utilitárias */
 .hidden { display: none !important; }
 
-/* Rodapé */
 .main-footer {
     background-color: var(--bg-card);
     border-top: 1px solid var(--border-color);
     text-align: center;
     padding: 20px;
+    margin-top: 40px;
     font-size: 0.9rem;
     color: var(--text-muted);
 }
 
-/* 📱 Responsividade - CSS Media Queries completas para Celular e Tablet */
+/* 📱 Responsividade via Media Queries (Item 8.3 Nível 4) */
 @media (min-width: 768px) {
     .grid-container {
         display: grid;
@@ -242,3 +241,6 @@ button:hover {
         flex: 1;
     }
 }
+
+    
+    
