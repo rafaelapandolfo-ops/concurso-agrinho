@@ -168,6 +168,7 @@ button:hover {
     padding: 8px 16px;
 }
 
+/* Sistema Accordion */
 .accordion-header {
     display: flex;
     justify-content: space-between;
@@ -199,6 +200,55 @@ button:hover {
     padding-top: 10px;
 }
 
+/* Novo: Estilização da Previsão do Tempo e do Mapa */
+.weather-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.weather-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-icon {
+    font-size: 3rem;
+}
+
+.weather-temp {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.weather-details p {
+    margin-bottom: 4px;
+}
+
+.satellite-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin: 15px 0;
+    background-color: #333;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.map-pixel {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    transition: background-color 0.5s ease;
+}
+
+.map-pixel.forest { background-color: #1b4d3e; }
+.map-pixel.crop { background-color: #2ecc71; }
+.map-pixel.dry { background-color: #f1c40f; }
+
+/* Elementos Visuais do Jogo */
 .game-instructions {
     margin-bottom: 15px;
     color: var(--text-muted);
