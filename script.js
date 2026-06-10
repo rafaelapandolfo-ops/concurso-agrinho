@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Variáveis de controle de estado do portal e simulador
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
@@ -10,10 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const estadosClimaticos = [
         { icone: "☀️", temp: "28°C", condicao: "Ensolarado ideal para colheita", umidade: "45%", risco: "Baixo", corPixel: "#2ecc71" },
         { icone: "🌧️", temp: "21°C", condicao: "Chuva moderada benéfica", umidade: "85%", risco: "Médio (Fungos)", corPixel: "#1b4d3e" },
-        { icone: "危害", temp: "19°C", condicao: "Estiagem prolongada em curso", umidade: "20%", risco: "Alto (Incêndio)", corPixel: "#f1c40f" }
+        { icone: "🍂", temp: "19°C", condicao: "Estiagem prolongada em curso", umidade: "20%", risco: "Alto (Incêndio)", corPixel: "#f1c40f" }
     ];
     let indiceClima = 0;
 
+    // Captura ordenada de todos os elementos necessários no DOM
     const btnDarkMode = document.getElementById("toggle-dark-mode");
     const btnAumentarFonte = document.getElementById("btn-aumentar-fonte");
     const btnDiminuirFonte = document.getElementById("btn-diminuir-fonte");
@@ -34,29 +36,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtScore = document.getElementById("score-pontos");
     const msgStatus = document.getElementById("mensagem-status");
 
-    // Elementos do Clima e Mapa
+    // Elementos do Clima e do Mapa por Satélite
     const btnMudarClima = document.getElementById("btn-mudar-clima");
     const climaIcone = document.getElementById("clima-icone");
     const climaTemp = document.getElementById("clima-temp");
     const climaCondicao = document.getElementById("clima-condicao");
     const climaUmidade = document.getElementById("clima-umidade");
     const climaRisco = document.getElementById("clima-risco");
-
-    // Seleciona todos os pixels mutáveis do mapa
     const pixelsMapa = document.querySelectorAll(".map-pixel");
 
-    // Lógica da Mudança Climática com Alteração Dinâmica de Cores do Mapa
+    // Lógica para controle e atualização do Painel Climático e Cores do Mapa
     btnMudarClima.addEventListener("click", function () {
         indiceClima = (indiceClima + 1) % estadosClimaticos.length;
         const climaAtual = estadosClimaticos[indiceClima];
 
+        // Atualização textual do painel climático
         climaIcone.textContent = climaAtual.icone;
         climaTemp.textContent = climaAtual.temp;
         climaCondicao.textContent = climaAtual.condicao;
         climaUmidade.textContent = climaAtual.umidade;
         climaRisco.textContent = climaAtual.risco;
 
-        // Atualiza a cor de fundo de todos os pixels para refletir o clima
+        // Atualização visual dos blocos do mapa de acordo com o clima
         pixelsMapa.forEach(function (pixel) {
             if (pixel.classList.contains("crop")) {
                 pixel.style.backgroundColor = climaAtual.corPixel;
@@ -64,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Dark Mode
+    // Alternador para o Modo Escuro
     btnDarkMode.addEventListener("click", function () {
         document.body.classList.toggle("dark-theme");
     });
 
-    // Acessibilidade de Fontes
+    // Controle de Acessibilidade: Redimensionamento de fontes via JS
     btnAumentarFonte.addEventListener("click", function () {
         if (tamanhoFonteAtual < 140) {
             tamanhoFonteAtual += 10;
@@ -84,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Formulário de Boas-vindas Personalizado
     formUsuario.addEventListener("submit", function (evento) {
         evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Accordion + Abertura automática ao clicar nos Links do Menu Superior
+    // Lógica do Accordion + Abertura Automática através do Menu Superior
     const titulosAccordion = document.querySelectorAll(".accordion-header");
     const linksMenu = document.querySelectorAll(".main-nav a");
 
@@ -119,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Motor do Simulador
+    // Motor de Renderização e Regras do Jogo Simulador
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -129,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         txtScore.textContent = pontos;
 
+        // Monitoramento estruturado de falhas críticas ou colapso
         if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
             jogoAtivo = false;
             btnIntensificar.disabled = true;
@@ -144,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Sistema de cálculo incremental de pontuação estável
     function somarPontos() {
         if (!jogoAtivo) return;
         const diferenca = Math.abs(producao - ambiente);
@@ -154,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Ouvintes de eventos para os comandos do simulador
     btnIntensificar.addEventListener("click", function () {
         if (!jogoAtivo) return;
         producao += 10;
@@ -178,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
+    // Controle para reinicialização completa da rodada
     btnResetGame.addEventListener("click", function () {
         producao = 50;
         ambiente = 50;
@@ -192,6 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
+    // Execução inicial do painel de estados
     atualizarInterfaceJogo();
 });
- 
