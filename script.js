@@ -1,4 +1,4 @@
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
@@ -10,7 +10,7 @@
     const estadosClimaticos = [
         { icone: "☀️", temp: "28°C", condicao: "Ensolarado ideal para colheita", umidade: "45%", risco: "Baixo", corPixel: "#2ecc71" },
         { icone: "🌧️", temp: "21°C", condicao: "Chuva moderada benéfica", umidade: "85%", risco: "Médio (Fungos)", corPixel: "#1b4d3e" },
-        { icone: "🍂", temp: "19°C", condicao: "Estiagem prolongada em curso", umidade: "20%", risco: "Alto (Incêndio)", corPixel: "#f1c40f" }
+        { icone: "危害", temp: "19°C", condicao: "Estiagem prolongada em curso", umidade: "20%", risco: "Alto (Incêndio)", corPixel: "#f1c40f" }
     ];
     let indiceClima = 0;
 
@@ -41,32 +41,35 @@
     const climaCondicao = document.getElementById("clima-condicao");
     const climaUmidade = document.getElementById("clima-umidade");
     const climaRisco = document.getElementById("clima-risco");
-    const pixelsMapa = document.querySelectorAll(".map-pixel.crop");
 
-    // Lógica Dinâmica da Previsão do Tempo e Mudança de Cores do Mapa
+    // Seleciona todos os pixels mutáveis do mapa
+    const pixelsMapa = document.querySelectorAll(".map-pixel");
+
+    // Lógica da Mudança Climática com Alteração Dinâmica de Cores do Mapa
     btnMudarClima.addEventListener("click", function () {
         indiceClima = (indiceClima + 1) % estadosClimaticos.length;
         const climaAtual = estadosClimaticos[indiceClima];
 
-        // Altera dados textuais da previsão no DOM
         climaIcone.textContent = climaAtual.icone;
         climaTemp.textContent = climaAtual.temp;
         climaCondicao.textContent = climaAtual.condicao;
         climaUmidade.textContent = climaAtual.umidade;
         climaRisco.textContent = climaAtual.risco;
 
-        // Manipula cores dos pixels do mapa de acordo com o clima simulado
+        // Atualiza a cor de fundo de todos os pixels para refletir o clima
         pixelsMapa.forEach(function (pixel) {
-            pixel.style.backgroundColor = climaAtual.corPixel;
+            if (pixel.classList.contains("crop")) {
+                pixel.style.backgroundColor = climaAtual.corPixel;
+            }
         });
     });
 
-    // Controle de Modo Escuro
+    // Dark Mode
     btnDarkMode.addEventListener("click", function () {
         document.body.classList.toggle("dark-theme");
     });
 
-    // Controle de Acessibilidade (Tamanho de Fonte)
+    // Acessibilidade de Fontes
     btnAumentarFonte.addEventListener("click", function () {
         if (tamanhoFonteAtual < 140) {
             tamanhoFonteAtual += 10;
@@ -116,7 +119,7 @@
         });
     });
 
-    // Motor do Jogo Simulador
+    // Motor do Simulador
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -191,3 +194,4 @@
 
     atualizarInterfaceJogo();
 });
+ 
