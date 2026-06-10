@@ -1,14 +1,14 @@
-// Aguarda o DOM carregar para iniciar a lógica
+// Aguarda o carregamento total do DOM
 document.addEventListener("DOMContentLoaded", function () {
     
-    // Variáveis globais para gerenciar o estado interno
+    // Configurações e estados mutáveis do simulador
     let nomeUsuario = "";
     let producao = 50;
     let ambiente = 50;
     let pontos = 0;
     let jogoAtivo = true;
 
-    // Captura ordenada dos elementos do DOM
+    // Elementos capturados na interface do usuário
     const btnDarkMode = document.getElementById("toggle-dark-mode");
     const formUsuario = document.getElementById("form-usuario");
     const inputNome = document.getElementById("input-nome");
@@ -27,29 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const txtScore = document.getElementById("score-pontos");
     const msgStatus = document.getElementById("mensagem-status");
 
-    // Alternador de Modo Claro/Escuro por manipulação de atributo
+    // Gerenciador do recurso extra de Modo Escuro por troca de classes
     btnDarkMode.addEventListener("click", function () {
-        const temaAtual = document.documentElement.getAttribute("data-theme");
-        if (temaAtual === "dark") {
-            document.documentElement.setAttribute("data-theme", "light");
-        } else {
-            document.documentElement.setAttribute("data-theme", "dark");
-        }
+        document.body.classList.toggle("dark-theme");
     });
 
-    // Processamento do formulário de boas-vindas
+    // Evento de envio e validação do formulário
     formUsuario.addEventListener("submit", function (evento) {
         evento.preventDefault(); 
         nomeUsuario = inputNome.value.trim();
         
         if (nomeUsuario !== "") {
-            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Busque o equilíbrio perfeito para salvar a simulação.`;
+            textoBoasVindas.textContent = `Olá, ${nomeUsuario}! Mantenha o equilíbrio produtivo e salve nosso ambiente.`;
             textoBoasVindas.classList.remove("hidden");
             formUsuario.classList.add("hidden");
         }
     });
 
-    // Função interna para renderizar o estado do jogo nas barras e textos
+    // Função interna para atualizar as barras de preenchimento e valores numéricos
     function atualizarInterfaceJogo() {
         txtProducao.textContent = producao;
         txtAmbiente.textContent = ambiente;
@@ -59,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         txtScore.textContent = pontos;
 
-        // Validação de colapso do sistema (Cenário de derrota/fim)
+        // Monitoramento estruturado de falhas críticas ou vitória
         if (producao <= 0 || ambiente <= 0 || producao >= 100 || ambiente >= 100) {
             jogoAtivo = false;
             btnIntensificar.disabled = true;
@@ -75,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Calcula bonificação incremental baseada no nível de igualdade dos fatores
+    // Soma pontuações caso a diferença proporcional seja mínima
     function somarPontos() {
         if (!jogoAtivo) return;
         const diferenca = Math.abs(producao - ambiente);
@@ -86,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Ouvintes de ação para cliques nos controles do jogo
+    // Gatilhos de cliques interativos do simulador ambiental
     btnIntensificar.addEventListener("click", function () {
         if (!jogoAtivo) return;
         producao += 10;
@@ -111,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Reseta o estado inicial do motor do jogo
+    // Limpa os dados de rodadas antigas e reinicia o motor de estados
     btnResetGame.addEventListener("click", function () {
         producao = 50;
         ambiente = 50;
@@ -126,6 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarInterfaceJogo();
     });
 
-    // Inicialização da interface na primeira execução
+    // Inicialização da janela ativa
     atualizarInterfaceJogo();
 });
