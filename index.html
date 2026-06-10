@@ -11,26 +11,33 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<script src="https://kit.fontawesome.com/4e5b8e0c6d.js" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
 
-<header>
+<div id="loader">
+<div class="spinner"></div>
+</div>
 
-<video autoplay muted loop playsinline>
-<source src="https://cdn.coverr.co/videos/coverr-green-fields-1566235857782?download=1080p" type="video/mp4">
-</video>
+<header class="hero">
 
 <div class="overlay"></div>
 
 <div class="hero-content">
+
 <h1>🌱 Agro Forte e Sustentável</h1>
-<p>Produzir mais. Preservar melhor. Garantir o futuro.</p>
+
+<p>
+Tecnologia, produção e preservação trabalhando juntas para alimentar o futuro.
+</p>
 
 <a href="#sobre" class="btn">
-Explorar
+Começar Jornada
 </a>
+
 </div>
 
 </header>
@@ -38,6 +45,7 @@ Explorar
 <nav>
 
 <a href="#sobre">Sobre</a>
+<a href="#beneficios">Benefícios</a>
 <a href="#galeria">Galeria</a>
 <a href="#videos">Vídeos</a>
 <a href="#quiz">Quiz</a>
@@ -45,71 +53,72 @@ Explorar
 
 </nav>
 
-<section id="sobre">
+<section id="sobre" class="fade">
 
-<h2>O Agro que Alimenta o Futuro</h2>
+<h2>O Futuro Está no Campo</h2>
 
 <p>
-O agronegócio brasileiro é responsável pela produção de alimentos,
-empregos e desenvolvimento econômico.
-Quando aliado à sustentabilidade, ele protege recursos naturais,
-reduz impactos ambientais e garante qualidade de vida para as próximas gerações.
+O agronegócio sustentável combina produtividade,
+tecnologia e responsabilidade ambiental.
+Ele garante alimentos para milhões de pessoas
+sem comprometer os recursos naturais.
 </p>
 
-<div class="cards">
+</section>
 
-<div class="card">
+<section id="beneficios">
+
+<div class="card fade">
 <i class="fas fa-seedling"></i>
-<h3>Produção Sustentável</h3>
-<p>Uso consciente do solo e da água.</p>
+<h3>Solo Saudável</h3>
+<p>Rotação de culturas e conservação do solo.</p>
 </div>
 
-<div class="card">
-<i class="fas fa-water"></i>
-<h3>Preservação</h3>
-<p>Proteção dos recursos hídricos.</p>
+<div class="card fade">
+<i class="fas fa-droplet"></i>
+<h3>Economia de Água</h3>
+<p>Irrigação inteligente e reaproveitamento.</p>
 </div>
 
-<div class="card">
+<div class="card fade">
 <i class="fas fa-solar-panel"></i>
 <h3>Energia Limpa</h3>
-<p>Uso crescente de energias renováveis.</p>
-</div>
-
+<p>Painéis solares e fontes renováveis.</p>
 </div>
 
 </section>
 
 <section class="numeros">
 
-<div class="contador">
-<h3 id="num1">0</h3>
-<p>Milhões de toneladas produzidas</p>
+<div>
+<h3 id="n1">0</h3>
+<p>Tecnologias Sustentáveis</p>
 </div>
 
-<div class="contador">
-<h3 id="num2">0</h3>
-<p>Produtores rurais</p>
+<div>
+<h3 id="n2">0</h3>
+<p>Projetos Verdes</p>
 </div>
 
-<div class="contador">
-<h3 id="num3">0</h3>
-<p>% da água economizada com irrigação moderna</p>
+<div>
+<h3 id="n3">0</h3>
+<p>Práticas Sustentáveis</p>
 </div>
 
 </section>
 
 <section id="galeria">
 
-<h2>Galeria Sustentável</h2>
+<h2>Galeria</h2>
 
 <div class="grid">
 
-<img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
-<img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
 <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef">
-<img src="https://images.unsplash.com/photo-1472396961693-142e6e269027">
-<img src="https://images.unsplash.com/photo-1465379944081-7f47de8d74ac">
+
+<img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+
+<img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
+
 <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
 
 </div>
@@ -120,11 +129,17 @@ reduz impactos ambientais e garante qualidade de vida para as próximas geraçõ
 
 <h2>Vídeos Educativos</h2>
 
-<div class="video-grid">
+<div class="video-container">
 
-<iframe src="https://www.youtube.com/embed/9U5w3WQj5Ks"></iframe>
+<iframe
+src="https://www.youtube.com/embed/Z6vYl7l8J4M"
+allowfullscreen>
+</iframe>
 
-<iframe src="https://www.youtube.com/embed/Op4SxK7w7E0"></iframe>
+<iframe
+src="https://www.youtube.com/embed/fcZXfoB2f70"
+allowfullscreen>
+</iframe>
 
 </div>
 
@@ -132,19 +147,19 @@ reduz impactos ambientais e garante qualidade de vida para as próximas geraçõ
 
 <section id="quiz">
 
-<h2>Quiz Interativo</h2>
+<h2>Quiz do Agro</h2>
 
-<div class="quiz-box">
+<div class="quiz">
 
-<h3 id="pergunta"></h3>
+<h3 id="question"></h3>
 
-<div id="respostas"></div>
+<div id="answers"></div>
 
-<button id="proximo">
-Próxima
+<button id="next">
+Próxima Pergunta
 </button>
 
-<p id="pontuacao"></p>
+<div id="result"></div>
 
 </div>
 
@@ -152,26 +167,22 @@ Próxima
 
 <section id="fontes">
 
-<h2>Fontes de Pesquisa</h2>
+<h2>Fontes</h2>
 
 <ul>
-
 <li>EMBRAPA</li>
 <li>FAO</li>
-<li>Ministério da Agricultura</li>
 <li>IBGE</li>
-
+<li>Ministério da Agricultura</li>
 </ul>
 
 </section>
 
 <footer>
 
-<h3>Concurso Agrinho 2026</h3>
+<h3>Agrinho 2026</h3>
 
-<p>
-Tema: Agro Forte e Sustentável
-</p>
+<p>Agro Forte e Sustentável</p>
 
 </footer>
 
