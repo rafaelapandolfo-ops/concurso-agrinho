@@ -1,120 +1,152 @@
-const perguntas = [
+window.addEventListener("load", () => {
+
+setTimeout(() => {
+document.getElementById("loader").style.display = "none";
+}, 1200);
+
+});
+
+const quiz = [
 
 {
-pergunta:"Qual prática ajuda a preservar o solo?",
-respostas:[
-"Queimadas",
-"Rotação de culturas",
-"Desmatamento",
-"Uso excessivo de agrotóxicos"
-],
-correta:1
+q:"O que ajuda a preservar o solo?",
+a:["Queimada","Rotação de culturas","Desmatamento","Poluição"],
+c:1
 },
 
 {
-pergunta:"O que é agricultura sustentável?",
-respostas:[
-"Produzir sem se preocupar com o ambiente",
-"Produzir preservando recursos naturais",
-"Parar toda produção agrícola",
-"Usar apenas máquinas"
-],
-correta:1
+q:"Qual energia é renovável?",
+a:["Petróleo","Diesel","Solar","Carvão"],
+c:2
 },
 
 {
-pergunta:"Qual fonte de energia é renovável?",
-respostas:[
-"Carvão",
-"Petróleo",
-"Solar",
-"Diesel"
+q:"O que é agricultura sustentável?",
+a:[
+"Produzir sem limites",
+"Produzir preservando recursos",
+"Desmatar mais",
+"Usar mais combustível"
 ],
-correta:2
+c:1
 }
 
 ];
 
-let atual=0;
-let pontos=0;
+let atual = 0;
+let score = 0;
+let respondeu = false;
 
-const pergunta=document.getElementById("pergunta");
-const respostas=document.getElementById("respostas");
-const pontuacao=document.getElementById("pontuacao");
+const question = document.getElementById("question");
+const answers = document.getElementById("answers");
+const result = document.getElementById("result");
 
-function carregarPergunta(){
+function loadQuestion(){
 
-pergunta.innerHTML=perguntas[atual].pergunta;
+respondeu=false;
 
-respostas.innerHTML="";
+question.textContent = quiz[atual].q;
 
-perguntas[atual].respostas.forEach((resp,index)=>{
+answers.innerHTML="";
 
-const btn=document.createElement("div");
+quiz[atual].a.forEach((item,index)=>{
 
-btn.classList.add("opcao");
+const div=document.createElement("div");
 
-btn.innerHTML=resp;
+div.classList.add("answer");
 
-btn.onclick=()=>{
+div.textContent=item;
 
-if(index===perguntas[atual].correta){
-pontos++;
+div.onclick=()=>{
+
+if(respondeu) return;
+
+respondeu=true;
+
+if(index===quiz[atual].c){
+
+score++;
+div.style.background="#00ff88";
+
+}else{
+
+div.style.background="#ff4444";
+
 }
-
-document.querySelectorAll(".opcao").forEach(o=>{
-o.style.pointerEvents="none";
-});
 
 };
 
-respostas.appendChild(btn);
+answers.appendChild(div);
 
 });
 
 }
 
-document.getElementById("proximo").onclick=()=>{
+document.getElementById("next").onclick=()=>{
+
+if(!respondeu) return;
 
 atual++;
 
-if(atual<perguntas.length){
-carregarPergunta();
-}
-else{
+if(atual<quiz.length){
 
-pergunta.innerHTML="Quiz Finalizado!";
+loadQuestion();
 
-respostas.innerHTML="";
+}else{
 
-pontuacao.innerHTML=
-`Você acertou ${pontos} de ${perguntas.length} perguntas. 🌱`;
+question.innerHTML="🌱 Quiz Finalizado";
+
+answers.innerHTML="";
+
+result.innerHTML=
+`Você acertou ${score} de ${quiz.length} perguntas.`;
 
 }
 
 };
 
-carregarPergunta();
+loadQuestion();
 
-function contador(id,final){
+function animate(id,max){
 
-let atual=0;
+let valor=0;
 
-let intervalo=setInterval(()=>{
+const elemento=document.getElementById(id);
 
-atual+=Math.ceil(final/100);
+const intervalo=setInterval(()=>{
 
-if(atual>=final){
-atual=final;
+valor++;
+
+elemento.innerText=valor;
+
+if(valor>=max){
+
 clearInterval(intervalo);
-}
-
-document.getElementById(id).innerHTML=atual;
-
-},30);
 
 }
 
-contador("num1",320);
-contador("num2",5000);
-contador("num3",70);
+},25);
+
+}
+
+animate("n1",120);
+animate("n2",350);
+animate("n3",95);
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".fade").forEach(el => {
+observer.observe(el);
+});
